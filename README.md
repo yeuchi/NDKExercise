@@ -12,5 +12,5 @@ first NDK exercise base on Frank Ableson
 1. Reuse existing C code with the Android NDK by Frank Ableson
    https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
    
-2. Sending int[]s between Java and C
+2. Sending int[]s between Java and C                                     
    https://stackoverflow.com/questions/4841345/sending-ints-between-java-and-c

@@ -1,5 +1,5 @@
 # NDKExercise
-first NDK exercise base on Frank Ableson
+first NDK exercise base on Frank Ableson's example.
 
 ### Convolution filters 
 - 7x7 blur RECT filter

@@ -19,11 +19,11 @@
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 typedef struct
 {
-    uint8_t alpha;
     uint8_t red;
     uint8_t green;
     uint8_t blue;
-} argb;
+    uint8_t alpha;
+} rgba;
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_ctyeung_ndkex1_MainActivity_stringFromJNI(
@@ -96,7 +96,7 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvert2GrayFromJNI(
     // modify pixels with image processing algorithm
 
     for (y=0;y<infocolor.height;y++) {
-        argb * line = (argb *) pixelscolor;
+        rgba * line = (rgba *) pixelscolor;
         uint8_t * grayline = (uint8_t *) pixelsgray;
         for (x=0;x<infocolor.width;x++) {
             grayline[x] = 0.3 * line[x].red + 0.59 * line[x].green + 0.11*line[x].blue;
@@ -193,7 +193,7 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
     // modify pixels with image processing algorithm
     for (y=pad;y<infosource.height-pad;y++)
     {
-        argb * destline = (argb *) pixelsconvolved;
+        rgba * destline = (rgba *) pixelsconvolved;
         for (x=pad;x<infosource.width-pad;x++)
         {
             double integralR = 0;
@@ -204,10 +204,10 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
             {
                 // identity kernel = 1  for debugging only
                 currentpixelssource = (char *)pixelssource + (infosource.stride * y);
-                argb * line = (argb *) currentpixelssource;
-                integralR =  line[x].alpha;
-                integralG =  line[x].red;
-                integralB =  line[x].green;
+                rgba * line = (rgba *) currentpixelssource;
+                integralR =  line[x].red;
+                integralG =  line[x].green;
+                integralB =  line[x].blue;
             }
             else
             {
@@ -216,23 +216,23 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
                 for(cy=0-pad; cy<=pad; cy++)
                 {
                     currentpixelssource = (char *)pixelssource + (infosource.stride * (y+cy));
-                    argb * line = (argb *) currentpixelssource;
+                    rgba * line = (rgba *) currentpixelssource;
 
                     for(cx=0-pad; cx<=pad; cx++)
                     {
                         int i = x+cx;
                         int kernelValue = c_array[ki++];
-                        integralR += line[i].alpha * kernelValue;
-                        integralG += line[i].red * kernelValue;
-                        integralB += line[i].green * kernelValue;
+                        integralR += line[i].red * kernelValue;
+                        integralG += line[i].green * kernelValue;
+                        integralB += line[i].blue * kernelValue;
                     }
                 }
             }
 
-            destline[x].blue = 255;   // alpha channel
-            destline[x].alpha = (int)(integralR / denominator); // red
-            destline[x].red = (int)(integralG / denominator);   // green
-            destline[x].green = (int)(integralB / denominator);  // blue
+            destline[x].alpha = 255;   // alpha channel
+            destline[x].red = (int)(integralR / denominator); // red
+            destline[x].green = (int)(integralG / denominator);   // green
+            destline[x].blue = (int)(integralB / denominator);  // blue
         }
 
         pixelsconvolved = (char *) pixelsconvolved + infoconvolved.stride;

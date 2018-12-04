@@ -18,14 +18,14 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="968px"
         android:id="@+id/image_dog"
         android:contentDescription="dog"
         android:src="@drawable/white_lion_small"/>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="968px"
         android:id="@+id/image_proccessed"
         android:contentDescription="dog"
         android:src="@drawable/white_lion_small_gray"/>

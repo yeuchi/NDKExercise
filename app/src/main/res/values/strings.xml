@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">NDKEx1</string>
     <string name="action_settings">Settings</string>
+    <string name="filter_identity">Identity</string>
+    <string name="filter_blur">Blur 7x7</string>
+    <string name="filter_sharpen">Sharpen 3x3</string>
+    <string name="filter_derivative_h">horizontal derivative</string>
+    <string name="filter_derivative_v">vertical derivative</string>
+    <string name="filter_derivative">isotropic derivative</string>
+
 </resources>

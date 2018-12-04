@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    private TextView mTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,48 +53,98 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        }); */
 
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI() + string2FromJNI());
+        mTextView = findViewById(R.id.filter_selection);
+        String filterType = getResources().getString(R.string.filter_derivative_h);
+        mTextView.setText(filterType);
+        int kernelWidth = 3;
+        int[] kernel = getHorizontalDerivativeKernel();
+        runJNICode_Convolution(kernel, kernelWidth);
+    }
 
-        runJNICode_Color2Gray();
+    private int[] getHorizontalDerivativeKernel()
+    {
+        int kernelWidth = 3;
+        int[] kernel = new int[kernelWidth*kernelWidth];
+        kernel[0] = -1;
+        kernel[1] = 1;
+        kernel[2] = 0;
+
+        kernel[3] = -1;
+        kernel[4] = 1;
+        kernel[5] = 0;
+
+        kernel[6] = -1;
+        kernel[7] = 1;
+        kernel[8] = 0;
+
+        return kernel;
+    }
+
+    private int[] getVerticalDerivativeKernel()
+    {
+        int kernelWidth = 3;
+        int[] kernel = new int[kernelWidth*kernelWidth];
+        kernel[0] = -1;
+        kernel[1] = -1;
+        kernel[2] = -1;
+
+        kernel[3] = 1;
+        kernel[4] = 1;
+        kernel[5] = 1;
+
+        kernel[6] = 0;
+        kernel[7] = 0;
+        kernel[8] = 0;
+
+        return kernel;
+    }
+
+    private int[] getIsotropicDerivativeKernel()
+    {
+        int kernelWidth = 3;
+        int[] kernel = new int[kernelWidth*kernelWidth];
+        kernel[0] = -1;
+        kernel[1] = -1;
+        kernel[2] = -1;
+
+        kernel[3] = -1;
+        kernel[4] = 8;
+        kernel[5] = -1;
+
+        kernel[6] = -1;
+        kernel[7] = -1;
+        kernel[8] = -1;
+
+        return kernel;
+    }
+
+    private int[] getSharpenKernel()
+    {
+        int kernelWidth = 3;
+        int[] kernel = new int[kernelWidth*kernelWidth];
+        kernel[0] = -1;
+        kernel[1] = -1;
+        kernel[2] = -1;
+
+        kernel[3] = -1;
+        kernel[4] = 10;
+        kernel[5] = -1;
+
+        kernel[6] = -1;
+        kernel[7] = -1;
+        kernel[8] = -1;
+
+        return kernel;
     }
 
     private int[] getBlurKernel()
     {
-        int kernelWidth = 5;
+        int kernelWidth = 7;
         int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = 1;
-        kernel[1] = 1;
-        kernel[2] = 1;
-        kernel[3] = 1;
-        kernel[4] = 1;
-
-        kernel[5] = 1;
-        kernel[6] = 1;
-        kernel[7] = 1;
-        kernel[8] = 1;
-        kernel[9] = 1;
-
-        kernel[10] = 1;
-        kernel[11] = 1;
-        kernel[12] = 1;
-        kernel[13] = 1;
-        kernel[14] = 1;
-
-        kernel[15] = 1;
-        kernel[16] = 1;
-        kernel[17] = 1;
-        kernel[18] = 1;
-        kernel[19] = 1;
-
-        kernel[20] = 1;
-        kernel[21] = 1;
-        kernel[22] = 1;
-        kernel[23] = 1;
-        kernel[24] = 1;
+        for(int i=0; i<kernel.length; i++)
+            kernel[i] = 1;
 
         return kernel;
     }
@@ -110,17 +162,15 @@ public class MainActivity extends AppCompatActivity {
      * https://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem
      * need to set option in CMakeLists.txt
      */
-    private void runJNICode_Color2Gray()
+    private void runJNICode_Convolution(int[] kernel,
+                                        int kernelWidth)
     {
         try {
 
             Bitmap bmpIn = BitmapFactory.decodeResource(getResources(), R.drawable.white_lion_small);
             Bitmap bmpOut = BitmapFactory.decodeResource(getResources(), R.drawable.white_lion_small_gray);
             //Bitmap bmpOut = Bitmap.createBitmap(bmpIn.getWidth(), bmpIn.getHeight(), Config.ALPHA_8);
-            //imageConvert2GrayFromJNI(bmpIn, bmpOut);
 
-            int kernelWidth = 3;
-            int[] kernel = getBlurKernel();
             imageConvolveFromJNI(bmpIn, bmpOut, kernel, kernelWidth);
 
             // insert processed image
@@ -152,12 +202,54 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        int kernelWidth;
+        int[] kernel;
 
+        String filterType;
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
-            return true;
+        switch (id)
+        {
+            default:
+            case R.id.filter_identity:
+                filterType = getResources().getString(R.string.filter_identity);
+                kernel = getIdentityKernel();
+                kernelWidth = 1;
+                break;
 
-        return super.onOptionsItemSelected(item);
+            case R.id.filter_deriviative_h:
+                filterType = getResources().getString(R.string.filter_derivative_h);
+                kernel = getHorizontalDerivativeKernel();
+                kernelWidth = 3;
+                break;
+
+            case R.id.filter_deriviative_v:
+                filterType = getResources().getString(R.string.filter_derivative_v);
+                kernel = getVerticalDerivativeKernel();
+                kernelWidth = 3;
+                break;
+
+            case R.id.filter_deriviative_isotropic:
+                filterType = getResources().getString(R.string.filter_derivative);
+                kernel = getIsotropicDerivativeKernel();
+                kernelWidth = 3;
+                break;
+
+            case R.id.filter_blur:
+                filterType = getResources().getString(R.string.filter_blur);
+                kernel = getBlurKernel();
+                kernelWidth = 7;
+                break;
+
+            case R.id.filter_sharpen:
+                filterType = getResources().getString(R.string.filter_sharpen);
+                kernel = getSharpenKernel();
+                kernelWidth = 3;
+                break;
+        }
+
+        mTextView.setText(filterType);
+        runJNICode_Convolution(kernel, kernelWidth);
+        return true;
     }
 
     /**

@@ -111,6 +111,17 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvert2GrayFromJNI(
     AndroidBitmap_unlockPixels(env, bitmapgray);
 }
 
+int bound(double value)
+{
+    if (value > 255)
+        return 255;
+
+    if (value < 0)
+        return 255;
+
+    return value;
+}
+
 /*
  * Convolution filter base on Frank Ableson's gray conversion
  */
@@ -190,6 +201,12 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
     for(int k=0; k<kernelWidth*kernelWidth; k++)
         denominator += c_array[k];
 
+    if(0==denominator)
+        denominator = 1;
+
+    if(0>denominator)
+        denominator *= -1;
+
     // modify pixels with image processing algorithm
     for (y=pad;y<infosource.height-pad;y++)
     {
@@ -230,9 +247,9 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
             }
 
             destline[x].alpha = 255;   // alpha channel
-            destline[x].red = (int)(integralR / denominator); // red
-            destline[x].green = (int)(integralG / denominator);   // green
-            destline[x].blue = (int)(integralB / denominator);  // blue
+            destline[x].red = bound(integralR / denominator); // red
+            destline[x].green = bound(integralG / denominator);   // green
+            destline[x].blue = bound(integralB / denominator);  // blue
         }
 
         pixelsconvolved = (char *) pixelsconvolved + infoconvolved.stride;
@@ -245,4 +262,6 @@ Java_com_ctyeung_ndkex1_MainActivity_imageConvolveFromJNI(
     // release the memory so java can have it again
     env->ReleaseIntArrayElements(arr, c_array, 0);
 }
+
+
 

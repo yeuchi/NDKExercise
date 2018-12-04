@@ -1,5 +1,5 @@
 # NDKExercise
-first NDK exercise base on Frank Ableson's example.
+first NDK exercise base on Frank Ableson's example.  Adding spatial convolution capability with the following examples.  User may define custom kernel.
 
 ### Convolution filters 
 - 7x7 blur RECT filter

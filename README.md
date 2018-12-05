@@ -21,3 +21,5 @@ Tested on Tablet emulator, Pixel C API 28 Android 9
    
 2. Sending int[]s between Java and C                                     
    https://stackoverflow.com/questions/4841345/sending-ints-between-java-and-c
+
+3. Digital Image Processing by Gonzalez and Woods, 1993. pg 189 - 215 ISBN:0-201-50803-6

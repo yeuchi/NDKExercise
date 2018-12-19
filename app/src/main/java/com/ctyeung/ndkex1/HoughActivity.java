@@ -1,6 +1,7 @@
 package com.ctyeung.ndkex1;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 /*
  * Reference:
@@ -26,6 +29,9 @@ public class HoughActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    private float mRadius = 40;
+    private int mThreshold = 91;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +48,8 @@ public class HoughActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         }); */
+
+        runJNICode();
     }
 
     @Override
@@ -52,6 +60,35 @@ public class HoughActivity extends AppCompatActivity {
         return true;
     }
 
+    private void runJNICode()
+    {
+        try {
+
+            // perform edge detection
+            Bitmap bmpIn = BitmapFactory.decodeResource(getResources(), R.drawable.circles);
+            Bitmap bmpOut = BitmapFactory.decodeResource(getResources(), R.drawable.circles);
+            //Bitmap bmpOut = Bitmap.createBitmap(bmpIn.getWidth(), bmpIn.getHeight(), Config.ALPHA_8);
+
+            imageConvolveFromJNI(bmpIn, bmpOut, BasicKernels.isotropicDerivative(), 3);
+
+            // insert processed image
+            ImageView imageView = this.findViewById(R.id.image_hough_derivative);
+
+            if (null != imageView)
+                imageView.setImageBitmap(bmpOut);
+
+
+            // perform Hough transform
+            String str = circleDetectFromJNI(bmpOut, mRadius, mThreshold);
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(this,
+                    (String)ex.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -59,6 +96,7 @@ public class HoughActivity extends AppCompatActivity {
         switch (id) {
             default:
             case R.id.hough_circle:
+                runJNICode();
                 break;
 
             case R.id.hough_line:
@@ -72,6 +110,13 @@ public class HoughActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
 
-    public native void imageConvolveFromJNI(Bitmap bmpIn, Bitmap BmpOut, int[] kernel, int kernelWidth);
+    public native void imageConvolveFromJNI(Bitmap bmpIn,
+                                            Bitmap BmpOut,
+                                            int[] kernel,
+                                            int kernelWidth);
+
+    public native String circleDetectFromJNI(Bitmap bmpIn,
+                                           float radius,
+                                           int threshold);
 
 }

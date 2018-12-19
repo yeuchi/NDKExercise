@@ -51,12 +51,20 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Object build statements for SHARED_LIBRARY target native-lib
 
-build CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/native-lib.cpp
+build CMakeFiles/native-lib.dir/src/main/cpp/CirclePoint.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/CirclePoint.cpp
   DEFINES = -Dnative_lib_EXPORTS
-  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o.d
+  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/CirclePoint.cpp.o.d
   FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include
-  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/native-lib.cpp
+  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/CirclePoint.cpp
+  OBJECT_DIR = CMakeFiles/native-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
+build CMakeFiles/native-lib.dir/src/main/cpp/HoughCircle.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/HoughCircle.cpp
+  DEFINES = -Dnative_lib_EXPORTS
+  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/HoughCircle.cpp.o.d
+  FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC
+  INCLUDES = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include
+  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/HoughCircle.cpp
   OBJECT_DIR = CMakeFiles/native-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
 build CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/Convolution.cpp
@@ -67,12 +75,12 @@ build CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o: CXX_COMPILER__na
   IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Convolution.cpp
   OBJECT_DIR = CMakeFiles/native-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
-build CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/Hough.cpp
+build CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/native-lib.cpp
   DEFINES = -Dnative_lib_EXPORTS
-  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o.d
+  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o.d
   FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC
   INCLUDES = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include
-  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Hough.cpp
+  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/native-lib.cpp
   OBJECT_DIR = CMakeFiles/native-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
 
@@ -83,7 +91,7 @@ build CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o: CXX_COMPILER__native-l
 #############################################
 # Link the shared library ../../../../build/intermediates/cmake/debug/obj/x86/libnative-lib.so
 
-build ../../../../build/intermediates/cmake/debug/obj/x86/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o | /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-x86/usr/lib/liblog.so
+build ../../../../build/intermediates/cmake/debug/obj/x86/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/CirclePoint.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/HoughCircle.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o | /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-x86/usr/lib/liblog.so
   LANGUAGE_COMPILE_FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info
   LINK_FLAGS = -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-x86 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/x86 -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now
   LINK_LIBRARIES = -ljnigraphics -llog -latomic -lm "/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/x86/libc++_static.a" "/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/x86/libc++abi.a"

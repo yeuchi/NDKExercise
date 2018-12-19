@@ -65,105 +65,12 @@ public class ConvolutionActivity extends AppCompatActivity
         String filterType = getResources().getString(R.string.filter_derivative_h);
         mTextView.setText(filterType);
         int kernelWidth = 3;
-        int[] kernel = getHorizontalDerivativeKernel();
+        int[] kernel = BasicKernels.horizontalDerivative();
         runJNICode_Convolution(kernel, kernelWidth);
     }
 
 
-    private int[] getHorizontalDerivativeKernel()
-    {
-        int kernelWidth = 3;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = -1;
-        kernel[1] = 1;
-        kernel[2] = 0;
 
-        kernel[3] = -1;
-        kernel[4] = 1;
-        kernel[5] = 0;
-
-        kernel[6] = -1;
-        kernel[7] = 1;
-        kernel[8] = 0;
-
-        return kernel;
-    }
-
-    private int[] getVerticalDerivativeKernel()
-    {
-        int kernelWidth = 3;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = -1;
-        kernel[1] = -1;
-        kernel[2] = -1;
-
-        kernel[3] = 1;
-        kernel[4] = 1;
-        kernel[5] = 1;
-
-        kernel[6] = 0;
-        kernel[7] = 0;
-        kernel[8] = 0;
-
-        return kernel;
-    }
-
-    private int[] getIsotropicDerivativeKernel()
-    {
-        int kernelWidth = 3;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = -1;
-        kernel[1] = -1;
-        kernel[2] = -1;
-
-        kernel[3] = -1;
-        kernel[4] = 8;
-        kernel[5] = -1;
-
-        kernel[6] = -1;
-        kernel[7] = -1;
-        kernel[8] = -1;
-
-        return kernel;
-    }
-
-    private int[] getSharpenKernel()
-    {
-        int kernelWidth = 3;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = -1;
-        kernel[1] = -1;
-        kernel[2] = -1;
-
-        kernel[3] = -1;
-        kernel[4] = 10;
-        kernel[5] = -1;
-
-        kernel[6] = -1;
-        kernel[7] = -1;
-        kernel[8] = -1;
-
-        return kernel;
-    }
-
-    private int[] getBlurKernel()
-    {
-        int kernelWidth = 7;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        for(int i=0; i<kernel.length; i++)
-            kernel[i] = 1;
-
-        return kernel;
-    }
-
-    private int[] getIdentityKernel()
-    {
-        int kernelWidth = 1;
-        int[] kernel = new int[kernelWidth*kernelWidth];
-        kernel[0] = 1;
-
-        return kernel;
-    }
 
     /*
      * https://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem
@@ -219,37 +126,37 @@ public class ConvolutionActivity extends AppCompatActivity
             default:
             case R.id.filter_identity:
                 filterType = getResources().getString(R.string.filter_identity);
-                kernel = getIdentityKernel();
+                kernel = BasicKernels.identity();
                 kernelWidth = 1;
                 break;
 
             case R.id.filter_deriviative_h:
                 filterType = getResources().getString(R.string.filter_derivative_h);
-                kernel = getHorizontalDerivativeKernel();
+                kernel = BasicKernels.horizontalDerivative();
                 kernelWidth = 3;
                 break;
 
             case R.id.filter_deriviative_v:
                 filterType = getResources().getString(R.string.filter_derivative_v);
-                kernel = getVerticalDerivativeKernel();
+                kernel = BasicKernels.verticalDerivative();
                 kernelWidth = 3;
                 break;
 
             case R.id.filter_deriviative_isotropic:
                 filterType = getResources().getString(R.string.filter_derivative);
-                kernel = getIsotropicDerivativeKernel();
+                kernel = BasicKernels.isotropicDerivative();
                 kernelWidth = 3;
                 break;
 
             case R.id.filter_blur:
                 filterType = getResources().getString(R.string.filter_blur);
-                kernel = getBlurKernel();
+                kernel = BasicKernels.blur();
                 kernelWidth = 7;
                 break;
 
             case R.id.filter_sharpen:
                 filterType = getResources().getString(R.string.filter_sharpen);
-                kernel = getSharpenKernel();
+                kernel = BasicKernels.sharpen();
                 kernelWidth = 3;
                 break;
         }

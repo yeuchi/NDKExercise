@@ -9,6 +9,7 @@
 #include <jni.h>
 #include <android/log.h>
 #include <android/bitmap.h>
+#include "Common.h"
 #include "Convolution.h"
 
 //////////////////////////////////////////////////////////////////

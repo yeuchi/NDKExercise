@@ -10,34 +10,28 @@
 #include <jni.h>
 #include <stdio.h>
 #include <string>
+#include <sstream>
 
 #include <android/log.h>
 #include <android/bitmap.h>
 #include "Convolution.h"
+#include "CirclePoint.h"
+#include "HoughCircle.h"
 
 #define  LOG_TAG    "libibmphotophun"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 AndroidBitmapInfo  infoSource;
-void*              pixelssource;
+void*              pixelsSource;
 AndroidBitmapInfo  infoDestination;
 void*              pixelsDestination;
 int                ret;
 
-bool initializeBitmaps(JNIEnv *env,
-                       jobject bitmapSource,
-                       jobject bitmapDestination)
+bool initializeBitmap(JNIEnv *env,
+                       jobject bitmapSource)
 {
-    LOGI("convolution");
     if ((ret = AndroidBitmap_getInfo(env, bitmapSource, &infoSource)) < 0)
-    {
-        LOGE("AndroidBitmap_getInfo() failed ! error=%d", ret);
-        return false;
-    }
-
-
-    if ((ret = AndroidBitmap_getInfo(env, bitmapDestination, &infoDestination)) < 0)
     {
         LOGE("AndroidBitmap_getInfo() failed ! error=%d", ret);
         return false;
@@ -50,6 +44,33 @@ bool initializeBitmaps(JNIEnv *env,
         return false;
     }
 
+    if ((ret = AndroidBitmap_lockPixels(env, bitmapSource, &pixelsSource)) < 0) {
+        LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
+        return false;
+    }
+
+    return true;
+}
+
+bool releaseBitmap(JNIEnv *env,
+                   jobject bitmapSource)
+{
+    if(NULL==bitmapSource)
+        return false;
+
+    AndroidBitmap_unlockPixels(env, bitmapSource);
+    return true;
+}
+
+bool initializeBitmaps(JNIEnv *env,
+                       jobject bitmapSource,
+                       jobject bitmapDestination)
+{
+    if ((ret = AndroidBitmap_getInfo(env, bitmapDestination, &infoDestination)) < 0)
+    {
+        LOGE("AndroidBitmap_getInfo() failed ! error=%d", ret);
+        return false;
+    }
 
     LOGI("convolved image :: width is %d; height is %d; stride is %d; format is %d;flags is %d",infoDestination.width,infoDestination.height,infoDestination.stride,infoDestination.format,infoDestination.flags);
     if (infoDestination.format != ANDROID_BITMAP_FORMAT_RGBA_8888)
@@ -59,58 +80,70 @@ bool initializeBitmaps(JNIEnv *env,
         return false;
     }
 
-    if ((ret = AndroidBitmap_lockPixels(env, bitmapSource, &pixelssource)) < 0) {
-        LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
-        return false;
-    }
-
     if ((ret = AndroidBitmap_lockPixels(env, bitmapDestination, &pixelsDestination)) < 0) {
         LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
         return false;
     }
 
-    return true;
+    return initializeBitmap(env, bitmapSource);
 }
 
 bool releaseBitmaps(JNIEnv *env,
                     jobject bitmapSource,
                     jobject bitmapDestination)
 {
-    if(NULL==bitmapSource ||
-       NULL==bitmapDestination)
+    if(NULL==bitmapDestination)
         return false;
 
-    AndroidBitmap_unlockPixels(env, bitmapSource);
     AndroidBitmap_unlockPixels(env, bitmapDestination);
-    return true;
+    return releaseBitmap(env, bitmapSource);
 }
 
 /*
  * Hough transform base on Frank Ableson's gray conversion
  */
-extern "C" JNIEXPORT void JNICALL
-Java_com_ctyeung_ndkex1_HoughActivity_CircleDetectFromJNI(
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_ctyeung_ndkex1_HoughActivity_circleDetectFromJNI(
         JNIEnv *env,
         jobject obj,
-        jobject bitmapsource,
-        jobject bitmapconvolved,
-        jint radius,
+        jobject bitmapSource,
+        jfloat radius,
         jint threshold)
 {
+    std::stringstream stringCircleList;
 
+    initializeBitmap(env, bitmapSource);
+
+    HoughCircle houghCircle;
+    houghCircle.CreateRhoTheta(radius, infoSource, pixelsSource);
+    CirclePoint* linkList = houghCircle.EvaluatePlot(threshold);
+    if(NULL!=linkList)
+    {
+        int numCircles = linkList->Size();
+
+        for(int i=0; i<numCircles; i++)
+        {
+            CirclePoint* circle = linkList->Pop();
+            stringCircleList << circle->mX;
+            stringCircleList << ',';
+            stringCircleList << circle->mY;
+            stringCircleList << ',';
+            stringCircleList << circle->mCount;
+        }
+    }
+    releaseBitmap(env, bitmapSource);
+    LOGI("unlocking pixels");
+
+    return env->NewStringUTF(stringCircleList.str().data());
 }
 
-/*
- * Convolution filter base on Frank Ableson's gray conversion
- */
-extern "C" JNIEXPORT void JNICALL
-Java_com_ctyeung_ndkex1_ConvolutionActivity_imageConvolveFromJNI(
-        JNIEnv *env,
-        jobject obj,
-        jobject bitmapsource,
-        jobject bitmapconvolved,
-        jintArray arr,
-        jint kernelWidth)
+void Convolve(JNIEnv *env,
+                 jobject obj,
+                 jobject bitmapsource,
+                 jobject bitmapconvolved,
+                 jintArray arr,
+                 jint kernelWidth)
 {
 
     // initializations, declarations, etc
@@ -128,13 +161,40 @@ Java_com_ctyeung_ndkex1_ConvolutionActivity_imageConvolveFromJNI(
 
     Convolution convolution;
     convolution.LoadKernel(&c_array[0], kernelWidth);
-    convolution.Convolve(infoSource, pixelssource, infoDestination, pixelsDestination);
+    convolution.Convolve(infoSource, pixelsSource, infoDestination, pixelsDestination);
 
     releaseBitmaps(env, bitmapsource, bitmapconvolved);
     LOGI("unlocking pixels");
 
     // release the memory so java can have it again
     env->ReleaseIntArrayElements(arr, c_array, 0);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_ctyeung_ndkex1_HoughActivity_imageConvolveFromJNI(
+        JNIEnv *env,
+        jobject obj,
+        jobject bitmapsource,
+        jobject bitmapconvolved,
+        jintArray arr,
+        jint kernelWidth)
+{
+    Convolve(env, obj, bitmapsource, bitmapconvolved, arr, kernelWidth);
+}
+
+/*
+ * Convolution filter base on Frank Ableson's gray conversion
+ */
+extern "C" JNIEXPORT void JNICALL
+Java_com_ctyeung_ndkex1_ConvolutionActivity_imageConvolveFromJNI(
+        JNIEnv *env,
+        jobject obj,
+        jobject bitmapsource,
+        jobject bitmapconvolved,
+        jintArray arr,
+        jint kernelWidth)
+{
+    Convolve(env, obj, bitmapsource, bitmapconvolved, arr, kernelWidth);
 }
 
 extern "C" JNIEXPORT jstring JNICALL

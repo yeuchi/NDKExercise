@@ -67,7 +67,7 @@ CirclePoint* CirclePoint::Pop()
 int CirclePoint::Size()
 {
     if(NULL!=next)
-        return (Size() + 1);
+        return (next->Size() + 1);
 
     return 1;
 }

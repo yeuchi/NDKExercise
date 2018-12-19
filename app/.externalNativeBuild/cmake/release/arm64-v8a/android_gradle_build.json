@@ -27,6 +27,12 @@
 					"flags" : "  --target=aarch64-none-linux-android26 --gcc-toolchain=/Users/ctyeung/Library/Android/sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O2 -DNDEBUG  -fPIC    -c ",
 					"src" : "/Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Convolution.cpp",
 					"workingDirectory" : "/Users/ctyeung/Documents/GitHub/NDKExercise/app/.externalNativeBuild/cmake/release/arm64-v8a"
+				},
+				
+				{
+					"flags" : "  --target=aarch64-none-linux-android26 --gcc-toolchain=/Users/ctyeung/Library/Android/sdk/ndk-bundle/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64 --sysroot=/Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O2 -DNDEBUG  -fPIC    -c ",
+					"src" : "/Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Hough.cpp",
+					"workingDirectory" : "/Users/ctyeung/Documents/GitHub/NDKExercise/app/.externalNativeBuild/cmake/release/arm64-v8a"
 				}
 			],
 			"output" : "/Users/ctyeung/Documents/GitHub/NDKExercise/app/build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so",

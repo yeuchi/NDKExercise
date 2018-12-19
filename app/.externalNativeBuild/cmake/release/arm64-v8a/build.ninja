@@ -67,6 +67,14 @@ build CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o: CXX_COMPILER__na
   IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Convolution.cpp
   OBJECT_DIR = CMakeFiles/native-lib.dir
   OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
+build CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o: CXX_COMPILER__native-lib ../../../../src/main/cpp/Hough.cpp
+  DEFINES = -Dnative_lib_EXPORTS
+  DEP_FILE = CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o.d
+  FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O2 -DNDEBUG  -fPIC
+  INCLUDES = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include
+  IN_ABS = /Users/ctyeung/Documents/GitHub/NDKExercise/app/src/main/cpp/Hough.cpp
+  OBJECT_DIR = CMakeFiles/native-lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/native-lib.dir/src/main/cpp
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target native-lib
@@ -75,7 +83,7 @@ build CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o: CXX_COMPILER__na
 #############################################
 # Link the shared library ../../../../build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so
 
-build ../../../../build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o | /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-arm64/usr/lib/liblog.so
+build ../../../../build/intermediates/cmake/release/obj/arm64-v8a/libnative-lib.so: CXX_SHARED_LIBRARY_LINKER__native-lib CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Convolution.cpp.o CMakeFiles/native-lib.dir/src/main/cpp/Hough.cpp.o | /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-arm64/usr/lib/liblog.so
   LANGUAGE_COMPILE_FLAGS = -isystem /Users/ctyeung/Library/Android/sdk/ndk-bundle/sysroot/usr/include/aarch64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O2 -DNDEBUG
   LINK_FLAGS = -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libatomic.a -nostdlib++ --sysroot /Users/ctyeung/Library/Android/sdk/ndk-bundle/platforms/android-26/arch-arm64 -Wl,--build-id -Wl,--warn-shared-textrel -Wl,--fatal-warnings -L/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/arm64-v8a -Wl,--no-undefined -Wl,-z,noexecstack -Qunused-arguments -Wl,-z,relro -Wl,-z,now
   LINK_LIBRARIES = -ljnigraphics -llog -latomic -lm "/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_static.a" "/Users/ctyeung/Library/Android/sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++abi.a"

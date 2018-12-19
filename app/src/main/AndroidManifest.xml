@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HoughActivity"
+            android:label="@string/title_activity_hough"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ConvolutionActivity"
+            android:label="@string/title_activity_convolution"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

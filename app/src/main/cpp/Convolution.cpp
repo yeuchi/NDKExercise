@@ -76,32 +76,20 @@ bool Convolution::Convolve(AndroidBitmapInfo infoSource,
                 double integralG = 0;
                 double integralB = 0;
 
-                if(0==pad)
+                // perform convolution with kernel
+                int ki = 0;
+                for(cy=0-pad; cy<=pad; cy++)
                 {
-                    // identity kernel = 1  for debugging only
-                    currentPixelsSource = (char *)pixelsSource + (infoSource.stride * y);
+                    currentPixelsSource = (char *)pixelsSource + (infoSource.stride * (y+cy));
                     rgba * line = (rgba *) currentPixelsSource;
-                    integralR =  line[x].red;
-                    integralG =  line[x].green;
-                    integralB =  line[x].blue;
-                }
-                else
-                {
-                    // perform convolution with kernel
-                    int ki = 0;
-                    for(cy=0-pad; cy<=pad; cy++)
-                    {
-                        currentPixelsSource = (char *)pixelsSource + (infoSource.stride * (y+cy));
-                        rgba * line = (rgba *) currentPixelsSource;
 
-                        for(cx=0-pad; cx<=pad; cx++)
-                        {
-                            int i = x+cx;
-                            int kernelValue = mKernel[ki++];
-                            integralR += line[i].red * kernelValue;
-                            integralG += line[i].green * kernelValue;
-                            integralB += line[i].blue * kernelValue;
-                        }
+                    for(cx=0-pad; cx<=pad; cx++)
+                    {
+                        int i = x+cx;
+                        int kernelValue = mKernel[ki++];
+                        integralR += line[i].red * kernelValue;
+                        integralG += line[i].green * kernelValue;
+                        integralB += line[i].blue * kernelValue;
                     }
                 }
 

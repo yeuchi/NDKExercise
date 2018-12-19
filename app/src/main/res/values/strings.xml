@@ -7,5 +7,9 @@
     <string name="filter_derivative_h">horizontal derivative</string>
     <string name="filter_derivative_v">vertical derivative</string>
     <string name="filter_derivative">isotropic derivative</string>
+    <string name="hough_line">hough line</string>
+    <string name="hough_circle">hough circle</string>
+    <string name="title_activity_hough">HoughActivity</string>
+    <string name="title_activity_convolution">ConvolutionActivity</string>
 
 </resources>

@@ -1,11 +1,14 @@
 package com.ctyeung.ndkex1;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +16,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ctyeung.ndkex1.data.JSONhelper;
+import com.ctyeung.ndkex1.data.ListGridAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /*
  * Reference:
@@ -32,6 +41,8 @@ public class HoughActivity extends AppCompatActivity {
 
     private float mRadius = 40;
     private int mThreshold = 184;
+    private Context mContext;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,7 @@ public class HoughActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hough);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mContext = this.getApplicationContext();
 
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -50,7 +62,26 @@ public class HoughActivity extends AppCompatActivity {
             }
         }); */
 
+        initGrid();
         runJNICode();
+    }
+
+    private void initGrid()
+    {
+        GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
+        layoutManager.setSmoothScrollbarEnabled(true);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_circles);
+        mRecyclerView.setLayoutManager(layoutManager);
+    }
+
+    /*
+     * display circle information in list
+     */
+    private void populateGridList(JSONArray circles)
+    {
+        ListGridAdapter adapter = new ListGridAdapter(circles);
+        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setHasFixedSize(true);
     }
 
     @Override
@@ -78,12 +109,19 @@ public class HoughActivity extends AppCompatActivity {
             if (null != imageView)
                 imageView.setImageBitmap(bmpOut);
 
-
             // perform Hough transform
-            String str = circleDetectFromJNI(bmpOut, mRadius, mThreshold);
+            String jsonString = circleDetectFromJNI(bmpOut, mRadius, mThreshold);
 
-            TextView textView = (TextView)findViewById(R.id.text_circles);
-            textView.setText(str);
+            // parse json
+            JSONArray circles = parseCircleJson(jsonString);
+
+            if(null!=circles) {
+                // log circles information to list
+                populateGridList(circles);
+
+                // draw highlight circles found
+                highlightCircles(circles);
+            }
         }
         catch (Exception ex)
         {
@@ -91,6 +129,38 @@ public class HoughActivity extends AppCompatActivity {
                     (String)ex.toString(),
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    /*
+     * Handle NDK Hough results
+     * 1. parse string -> json -> json array
+     * 2. update UI circle count
+     * 3. return null or json array (if any circles)
+     */
+    private JSONArray parseCircleJson(String jsonString)
+    {
+        try {
+            JSONObject json = JSONhelper.parseJson(jsonString);
+            JSONArray circles = JSONhelper.getJsonArray(json, "circles");
+
+            String numCircles = JSONhelper.parseValueByKey(json, "total");
+            TextView textView = (TextView) findViewById(R.id.text_circles);
+            textView.setText("Number Circles: " + numCircles);
+            int count = Integer.valueOf(numCircles);
+            return (count > 0) ? circles : null;
+        }
+        catch (Exception ex)
+        {
+            return null;
+        }
+    }
+
+    /*
+     * draw circle highlight on image
+     */
+    private void highlightCircles(JSONArray circles)
+    {
+
     }
 
     @Override

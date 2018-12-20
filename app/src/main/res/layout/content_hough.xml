@@ -11,6 +11,7 @@
     android:layout_gravity="top"
     tools:showIn="@layout/activity_hough">
 
+    <!--
     <ImageView
         android:layout_width="600px"
         android:layout_height="600px"
@@ -18,28 +19,57 @@
         android:contentDescription="circles"
         android:src="@drawable/circles"/>
 
-    <ImageView
-        android:layout_width="600px"
-        android:layout_height="600px"
-        android:id="@+id/image_hough_derivative"
-        android:contentDescription="derivative"
-        android:src="@drawable/circles"/>
+    -->
 
-    <ImageView
-        android:layout_width="600px"
-        android:layout_height="600px"
-        android:id="@+id/image_hough_found"
-        android:contentDescription="hough found"
-        android:src="@drawable/circles"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_circles"/>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="600px"
+            android:layout_height="600px"
+            android:id="@+id/image_hough_derivative"
+            android:contentDescription="derivative"
+            android:src="@drawable/circles"/>
+
+        <ImageView
+            android:layout_width="600px"
+            android:layout_height="600px"
+            android:id="@+id/image_hough_found"
+            android:contentDescription="hough found"
+            android:src="@drawable/circles"/>
+
+    </LinearLayout>
+
 
     <NumberPicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/num_threshold"></NumberPicker>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_circles"/>
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/grid_circles"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_gravity="bottom"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:scrollbarFadeDuration="0"
+        android:scrollbarDefaultDelayBeforeFade="500000"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:isScrollContainer="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_circles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </GridLayout>
 </LinearLayout>

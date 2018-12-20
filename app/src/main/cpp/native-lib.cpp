@@ -123,19 +123,21 @@ Java_com_ctyeung_ndkex1_HoughActivity_circleDetectFromJNI(
     if(NULL!=linkList)
     {
         int numCircles = linkList->Size();
-        os << "NumCircles:" << numCircles << "\n";
+        os << "{\"total\":" << numCircles << ",\"circles\":[";
 
         for(int i=0; i<numCircles; i++)
         {
             CirclePoint* circle = linkList->Pop();
             if(NULL!=circle)
             {
-                if(i<5)
-                    os << "x:" << circle->mX << ",y:" << circle->mY << ",count:" <<circle->mCount <<",\n";
+                if(i>0)
+                    os << ",";
 
+                os << "{ \"index\":" << i << ",\"x\":" << circle->mX << ",\"y\":" << circle->mY << ",\"count\":" <<circle->mCount <<"}";
                 delete circle;
             }
         }
+        os << "]}";
         delete linkList;
         string = os.str();
     }

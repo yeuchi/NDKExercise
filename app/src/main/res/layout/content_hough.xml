@@ -32,6 +32,11 @@
         android:contentDescription="hough found"
         android:src="@drawable/circles"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_circles"/>
+
     <NumberPicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

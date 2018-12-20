@@ -111,31 +111,39 @@ Java_com_ctyeung_ndkex1_HoughActivity_circleDetectFromJNI(
         jfloat radius,
         jint threshold)
 {
-    std::stringstream stringCircleList;
-
     initializeBitmap(env, bitmapSource);
 
     HoughCircle houghCircle;
     houghCircle.CreateRhoTheta(radius, infoSource, pixelsSource);
     CirclePoint* linkList = houghCircle.EvaluatePlot(threshold);
+
+    std::string string="";
+    std::ostringstream os;
+
     if(NULL!=linkList)
     {
         int numCircles = linkList->Size();
+        os << "NumCircles:" << numCircles << "\n";
 
         for(int i=0; i<numCircles; i++)
         {
             CirclePoint* circle = linkList->Pop();
-            stringCircleList << circle->mX;
-            stringCircleList << ',';
-            stringCircleList << circle->mY;
-            stringCircleList << ',';
-            stringCircleList << circle->mCount;
+            if(NULL!=circle)
+            {
+                if(i<5)
+                    os << "x:" << circle->mX << ",y:" << circle->mY << ",count:" <<circle->mCount <<",\n";
+
+                delete circle;
+            }
         }
+        delete linkList;
+        string = os.str();
     }
+
     releaseBitmap(env, bitmapSource);
     LOGI("unlocking pixels");
 
-    return env->NewStringUTF(stringCircleList.str().data());
+    return env->NewStringUTF(string.c_str());
 }
 
 void Convolve(JNIEnv *env,

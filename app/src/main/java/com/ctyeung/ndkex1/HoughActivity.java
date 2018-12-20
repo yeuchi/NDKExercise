@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /*
@@ -30,7 +31,7 @@ public class HoughActivity extends AppCompatActivity {
     }
 
     private float mRadius = 40;
-    private int mThreshold = 91;
+    private int mThreshold = 184;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,9 @@ public class HoughActivity extends AppCompatActivity {
 
             // perform Hough transform
             String str = circleDetectFromJNI(bmpOut, mRadius, mThreshold);
+
+            TextView textView = (TextView)findViewById(R.id.text_circles);
+            textView.setText(str);
         }
         catch (Exception ex)
         {

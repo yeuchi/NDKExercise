@@ -160,7 +160,8 @@ public class HoughActivity extends AppCompatActivity {
      */
     private void highlightCircles(JSONArray circles)
     {
-
+        HighlightView view = findViewById(R.id.image_hough_found);
+        view.draw(circles, mRadius);
     }
 
     @Override

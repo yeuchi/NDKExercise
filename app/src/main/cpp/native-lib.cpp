@@ -138,7 +138,7 @@ Java_com_ctyeung_ndkex1_HoughActivity_circleDetectFromJNI(
             }
         }
         os << "]}";
-        delete linkList;
+        //delete linkList;
         string = os.str();
     }
 
@@ -155,7 +155,6 @@ void Convolve(JNIEnv *env,
                  jintArray arr,
                  jint kernelWidth)
 {
-
     // initializations, declarations, etc
     jint *c_array;
 

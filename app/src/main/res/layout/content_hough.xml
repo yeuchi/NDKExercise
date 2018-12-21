@@ -33,12 +33,11 @@
             android:contentDescription="derivative"
             android:src="@drawable/circles"/>
 
-        <ImageView
+        <com.ctyeung.ndkex1.HighlightView
             android:layout_width="600px"
             android:layout_height="600px"
             android:id="@+id/image_hough_found"
-            android:contentDescription="hough found"
-            android:src="@drawable/circles"/>
+            android:background="@drawable/circles"/>
 
     </LinearLayout>
 

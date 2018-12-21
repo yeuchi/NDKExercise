@@ -20,7 +20,7 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 4. draw highlight around circle on [image #2].
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png">
 
-### Device
+### Devices
 Tested on the following devices.
 1. Tablet emulator, Pixel C API 28 Android 9
 2. Samsung S9

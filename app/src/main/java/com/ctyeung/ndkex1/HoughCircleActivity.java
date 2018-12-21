@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,14 +33,14 @@ import org.json.JSONObject;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class HoughActivity extends AppCompatActivity {
+public class HoughCircleActivity extends AppCompatActivity {
 
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    private float mRadius = 40;
+    private int mRadius = 40;
     private int mThreshold = 184;
     private Context mContext;
     private RecyclerView mRecyclerView;
@@ -62,8 +63,22 @@ public class HoughActivity extends AppCompatActivity {
             }
         }); */
 
+        intNumberPickers();
         initGrid();
         runJNICode();
+    }
+
+    private void intNumberPickers()
+    {
+        NumberPicker thresholdPicker = findViewById(R.id.num_threshold);
+        thresholdPicker.setMaxValue(255);
+        thresholdPicker.setMinValue(0);
+        thresholdPicker.setValue(mThreshold);
+
+        NumberPicker radiusPicker = findViewById(R.id.num_radius);
+        radiusPicker.setMaxValue(300);
+        radiusPicker.setMinValue(0);
+        radiusPicker.setValue(mRadius);
     }
 
     private void initGrid()
@@ -191,7 +206,7 @@ public class HoughActivity extends AppCompatActivity {
                                             int kernelWidth);
 
     public native String circleDetectFromJNI(Bitmap bmpIn,
-                                           float radius,
+                                           int radius,
                                            int threshold);
 
 }

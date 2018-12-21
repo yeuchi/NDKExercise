@@ -104,11 +104,11 @@ bool releaseBitmaps(JNIEnv *env,
  */
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_ctyeung_ndkex1_HoughActivity_circleDetectFromJNI(
+Java_com_ctyeung_ndkex1_HoughCircleActivity_circleDetectFromJNI(
         JNIEnv *env,
         jobject obj,
         jobject bitmapSource,
-        jfloat radius,
+        jint radius,
         jint threshold)
 {
     initializeBitmap(env, bitmapSource);
@@ -180,7 +180,7 @@ void Convolve(JNIEnv *env,
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_ctyeung_ndkex1_HoughActivity_imageConvolveFromJNI(
+Java_com_ctyeung_ndkex1_HoughCircleActivity_imageConvolveFromJNI(
         JNIEnv *env,
         jobject obj,
         jobject bitmapsource,

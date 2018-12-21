@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HoughActivity"
+            android:name=".HoughCircleActivity"
             android:label="@string/title_activity_hough"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

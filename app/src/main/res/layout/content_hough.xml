@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".HoughActivity"
+    tools:context=".HoughCircleActivity"
     android:orientation="vertical"
     android:layout_gravity="top"
     tools:showIn="@layout/activity_hough">
@@ -21,35 +21,109 @@
 
     -->
 
+    <!-- Derivative / Highlight Images -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="600px"
-            android:layout_height="600px"
-            android:id="@+id/image_hough_derivative"
-            android:contentDescription="derivative"
-            android:src="@drawable/circles"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
 
-        <com.ctyeung.ndkex1.HighlightView
-            android:layout_width="600px"
-            android:layout_height="600px"
-            android:id="@+id/image_hough_found"
-            android:background="@drawable/circles"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Derivative image"/>
+
+            <ImageView
+                android:layout_width="600px"
+                android:layout_height="600px"
+                android:id="@+id/image_hough_derivative"
+                android:contentDescription="derivative"
+                android:src="@drawable/circles"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Source image with highlight"/>
+
+            <com.ctyeung.ndkex1.HighlightView
+                android:layout_width="600px"
+                android:layout_height="600px"
+                android:id="@+id/image_hough_found"
+                android:background="@drawable/circles"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <!-- NumberPickers -->
 
-    <NumberPicker
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/num_threshold"></NumberPicker>
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Radius"/>
+
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/num_radius"></NumberPicker>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Threshold"/>
+
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/num_threshold"></NumberPicker>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Circles found -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:id="@+id/text_circles"/>
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"

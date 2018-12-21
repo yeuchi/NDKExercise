@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.ctyeung.ndkex1.HoughActivity">
+    tools:context="com.ctyeung.ndkex1.HoughCircleActivity">
 
     <item
         android:id="@+id/hough_line"

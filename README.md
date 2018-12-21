@@ -25,4 +25,4 @@ Tested on Tablet emulator, Pixel C API 28 Android 9
 3. Digital Image Processing by Gonzalez and Woods, 1993. pg 189 - 215 ISBN:0-201-50803-6
 
 4. NDK-stack tool for debugging
-https://developer.android.com/ndk/guides/ndk-stack
+   https://developer.android.com/ndk/guides/ndk-stack

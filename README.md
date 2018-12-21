@@ -13,6 +13,11 @@ NDK exercise base on Frank Ableson's example.  Added spatial convolution capabil
 
 ### Hough Circle
 
+Cyan border around yellow marks the circle found.  The algorithm is as follows.
+1. convolution -> edge detection [image #1].
+2. create rho-theta plot of circle candidates.
+3. threshold peak value as circle found.
+4. draw highlight around circle on [image #2].
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png">
 
 ### Device

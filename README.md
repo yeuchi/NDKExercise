@@ -11,8 +11,14 @@ NDK exercise base on Frank Ableson's example.  Added spatial convolution capabil
 
 <img width="280" src="https://user-images.githubusercontent.com/1282659/49413992-6c7a0c80-f737-11e8-8dcd-e1160f64513f.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/49452005-feb8f980-f7a5-11e8-92bf-1c1add07f123.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/49452012-0082bd00-f7a6-11e8-980f-2d7821e9aa18.png">
 
+### Hough Circle
+
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50365341-9d30b300-0539-11e9-9b65-424a6aff7803.png">
+
 ### Device
-Tested on Tablet emulator, Pixel C API 28 Android 9
+Tested on the following devices.
+1. Tablet emulator, Pixel C API 28 Android 9
+2. Samsung S9
 
 ### Reference
 
@@ -26,3 +32,7 @@ Tested on Tablet emulator, Pixel C API 28 Android 9
 
 4. NDK-stack tool for debugging
    https://developer.android.com/ndk/guides/ndk-stack
+   
+5. Hough transform - Circle [my Adobe Flex implementation - right click for source code]
+   http://www.ctyeung.com/flex/hough/srcview/index.html
+   

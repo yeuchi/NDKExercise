@@ -13,7 +13,6 @@ NDK exercise base on Frank Ableson's example.  Added spatial convolution capabil
 
 ### Hough Circle
 
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50365341-9d30b300-0539-11e9-9b65-424a6aff7803.png">
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50365486-7757de00-053a-11e9-894a-78b02dd7c802.png">
 
 ### Device

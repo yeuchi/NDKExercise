@@ -1,5 +1,5 @@
 # NDKExercise
-NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.
+NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for circle detection. 
 
 ### Convolution filters 
 - 7x7 blur RECT filter

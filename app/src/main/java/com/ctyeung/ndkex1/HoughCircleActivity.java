@@ -53,32 +53,48 @@ public class HoughCircleActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
 
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
-
-        intNumberPickers();
+        intUIControlls();
         initGrid();
         runJNICode();
     }
 
-    private void intNumberPickers()
+    /*
+     * initialize UI controlls + handlers
+     * - move this into MVP presenter class
+     */
+    private void intUIControlls()
     {
         NumberPicker thresholdPicker = findViewById(R.id.num_threshold);
         thresholdPicker.setMaxValue(255);
         thresholdPicker.setMinValue(0);
         thresholdPicker.setValue(mThreshold);
 
+        thresholdPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+                mThreshold = newVal;
+            }
+        });
+
         NumberPicker radiusPicker = findViewById(R.id.num_radius);
         radiusPicker.setMaxValue(300);
         radiusPicker.setMinValue(0);
         radiusPicker.setValue(mRadius);
+
+        radiusPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+                mRadius = newVal;
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_star);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runJNICode();
+            }
+        });
     }
 
     private void initGrid()
@@ -103,7 +119,7 @@ public class HoughCircleActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_hough, menu);
+        //getMenuInflater().inflate(R.menu.menu_hough, menu);
         return true;
     }
 

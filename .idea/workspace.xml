@@ -5,6 +5,10 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
@@ -21,21 +25,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/arm64-v8a/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug/x86_64/CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_hough.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_hough.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +52,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44250596">
+    <splitter split-orientation="horizontal" split-proportion="0.62352943">
       <split-first>
         <leaf>
           <file leaf-file-name="HoughCircle.cpp" pinned="false" current-in-tab="false">
@@ -72,23 +67,45 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CirclePoint.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/cpp/CirclePoint.cpp">
+          <file leaf-file-name="HoughCircleActivity.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="483">
-                  <caret line="65" column="3" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="3" />
+                <state relative-caret-position="271">
+                  <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
                   <folding>
-                    <element signature="e#142#158#0" expanded="true" />
+                    <element signature="e#2033#2242#0" expanded="true" />
+                    <element signature="e#2241#2242#0" expanded="true" />
+                    <element signature="e#2480#2689#0" expanded="true" />
+                    <element signature="e#2688#2689#0" expanded="true" />
+                    <element signature="e#2812#2961#0" expanded="true" />
+                    <element signature="e#2960#2961#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HoughActivity.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java">
+          <file leaf-file-name="content_main.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+              <provider editor-type-id="android-designer2">
+                <state />
+              </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="222">
-                  <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+                <state relative-caret-position="285">
+                  <caret line="19" selection-start-line="19" selection-end-line="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/MainActivity.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="373">
+                  <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1254#1505#0" expanded="true" />
+                    <element signature="e#1504#1505#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -114,42 +131,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ListGridAdapter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/data/ListGridAdapter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-539">
-                  <caret line="34" selection-start-line="34" selection-end-line="34" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#3000#3001#0" expanded="true" />
-                    <element signature="e#3041#3042#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="JSONArraySort.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/data/JSONArraySort.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret selection-end-column="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="JSONhelper.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/data/JSONhelper.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="32" selection-start-column="32" selection-end-column="32" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="content_hough.xml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="content_hough.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_hough.xml">
               <provider editor-type-id="android-designer2">
                 <state />
@@ -164,14 +146,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recyclerview_item.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recyclerview_item.xml">
+          <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="15" selection-start-line="15" selection-end-line="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="activity_hough.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml">
               <provider editor-type-id="android-designer2">
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+                <state relative-caret-position="375">
+                  <caret line="25" column="33" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="33" />
                 </state>
               </provider>
             </entry>
@@ -201,8 +192,8 @@
           <file leaf-file-name="native-lib.cpp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-341">
-                  <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+                <state relative-caret-position="147">
+                  <caret line="161" column="29" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
                   <folding>
                     <element signature="e#292#308#0" expanded="true" />
                   </folding>
@@ -283,6 +274,7 @@
       <find>infoSource</find>
       <find>HoughCircle</find>
       <find>onResponse</find>
+      <find>menu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2587,7 +2579,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_convolution.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_convolution.xml" />
@@ -2613,16 +2604,19 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/data/ListGridAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recyclerview_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HighlightView.java" />
-        <option value="$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_hough.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="41" />
+    <option name="x" value="111" />
     <option name="y" value="23" />
-    <option name="width" value="1476" />
+    <option name="width" value="1320" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectView">
@@ -2673,6 +2667,12 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="mipmap" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="NDKExercise" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -2821,19 +2821,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="23" width="1476" height="877" extended-state="0" />
+    <frame x="111" y="23" width="1320" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" />
       <window_info id="Build Variants" side_tool="true" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Viewer" side_tool="true" />
-      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Logcat" visible="true" weight="0.17820513" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
       <window_info anchor="bottom" id="Build" weight="0.32435897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.33974358" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.14615385" />
       <window_info anchor="right" id="Device File Explorer" side_tool="true" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" />
@@ -2844,7 +2844,7 @@
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Captures" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12064156" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13536777" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Gradle" />
       <window_info anchor="right" id="Theme Preview" />
@@ -2902,11 +2902,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp</url>
-          <line>147</line>
+          <line>157</line>
           <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java</url>
           <line>142</line>
           <properties />
           <option name="timeStamp" value="89" />
@@ -2918,19 +2918,19 @@
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java</url>
           <line>168</line>
           <properties />
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java</url>
           <line>137</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java</url>
           <line>130</line>
           <properties />
           <option name="timeStamp" value="109" />
@@ -2994,39 +2994,12 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-71" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_convolution.xml">
@@ -3074,20 +3047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1844#2095#0" expanded="true" />
-            <element signature="e#2094#2095#0" expanded="true" />
-            <element signature="e#2190#2435#0" expanded="true" />
-            <element signature="e#2434#2435#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3141,14 +3100,6 @@
         <state relative-caret-position="300">
           <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/ConvolutionActivity.java">
@@ -3244,20 +3195,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#886#916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/cpp/native-lib.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-341">
-          <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
+        <state relative-caret-position="147">
+          <caret line="161" column="29" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
           <folding>
             <element signature="e#292#308#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1254#1505#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
@@ -3270,6 +3256,31 @@
           <caret line="80" selection-start-line="80" selection-end-line="80" />
           <folding>
             <element signature="e#328#368#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_hough.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/ctyeung/ndkex1/HoughCircleActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="62" column="28" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
+          <folding>
+            <element signature="e#2033#2242#0" expanded="true" />
+            <element signature="e#2241#2242#0" expanded="true" />
+            <element signature="e#2480#2689#0" expanded="true" />
+            <element signature="e#2688#2689#0" expanded="true" />
+            <element signature="e#2812#2961#0" expanded="true" />
+            <element signature="e#2960#2961#0" expanded="true" />
           </folding>
         </state>
       </provider>

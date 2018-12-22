@@ -100,23 +100,11 @@ bool releaseBitmaps(JNIEnv *env,
 }
 
 /*
- * Hough transform base on Frank Ableson's gray conversion
+ * Convert Linklist objects -> JsonString
+ * return "" or json
  */
-
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_ctyeung_ndkex1_HoughCircleActivity_circleDetectFromJNI(
-        JNIEnv *env,
-        jobject obj,
-        jobject bitmapSource,
-        jint radius,
-        jint threshold)
+std::string CirclePoints2JsonString(CirclePoint* linkList)
 {
-    initializeBitmap(env, bitmapSource);
-
-    HoughCircle houghCircle;
-    houghCircle.CreateRhoTheta(radius, infoSource, pixelsSource);
-    CirclePoint* linkList = houghCircle.EvaluatePlot(threshold);
-
     std::string string="";
     std::ostringstream os;
 
@@ -141,10 +129,32 @@ Java_com_ctyeung_ndkex1_HoughCircleActivity_circleDetectFromJNI(
         //delete linkList;
         string = os.str();
     }
+    return string;
+}
 
-    releaseBitmap(env, bitmapSource);
+/*
+ * Hough transform base on Frank Ableson's gray conversion
+ */
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_ctyeung_ndkex1_HoughCircleActivity_circleDetectFromJNI(
+        JNIEnv *env,
+        jobject obj,
+        jobject bitmapSource,
+        jint radius,
+        jint threshold)
+{
+    initializeBitmap(env, bitmapSource);
+
+    // create rho-theta plot
+    HoughCircle houghCircle;
+    houghCircle.CreateRhoTheta(radius, infoSource, pixelsSource);
+
     LOGI("unlocking pixels");
+    releaseBitmap(env, bitmapSource);
 
+    // threshold for circles
+    CirclePoint* linkList = houghCircle.EvaluatePlot(threshold);
+    std::string string = CirclePoints2JsonString(linkList);
     return env->NewStringUTF(string.c_str());
 }
 

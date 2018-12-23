@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
 
+        initButtons();
+    }
+
+    private void initButtons()
+    {
         Button btnConvolution = findViewById(R.id.btnConvolution);
         btnConvolution.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnHough = findViewById(R.id.btnHough);
-        btnHough.setOnClickListener(new View.OnClickListener() {
+        Button btnHoughCircle = findViewById(R.id.btnHoughCircle);
+        btnHoughCircle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
@@ -46,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnHoughLine = findViewById(R.id.btnHoughLine);
+        btnHoughLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(mContext, HoughLineActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public native String stringFromJNI();

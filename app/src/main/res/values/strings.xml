@@ -11,5 +11,6 @@
     <string name="hough_circle">hough circle</string>
     <string name="title_activity_hough">Hough Circles</string>
     <string name="title_activity_convolution">Spatial Convolution</string>
+    <string name="title_activity_hough_line">HoughLineActivity</string>
 
 </resources>

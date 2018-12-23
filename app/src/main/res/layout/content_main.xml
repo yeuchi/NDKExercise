@@ -20,6 +20,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnHough"
-        android:text="Hough"/>
+        android:id="@+id/btnHoughCircle"
+        android:text="Hough Circle"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnHoughLine"
+        android:text="Hough Line"/>
 </LinearLayout>

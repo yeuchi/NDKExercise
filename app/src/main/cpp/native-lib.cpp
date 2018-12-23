@@ -17,6 +17,7 @@
 #include "Convolution.h"
 #include "CirclePoint.h"
 #include "HoughCircle.h"
+#include "HoughLine.h"
 
 #define  LOG_TAG    "libibmphotophun"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
@@ -133,6 +134,61 @@ std::string CirclePoints2JsonString(CirclePoint* linkList)
 }
 
 /*
+ * Convert histogram objects -> JsonString
+ * return "" or json
+ */
+std::string Lines2JsonString(uint16_t* histogram,
+                             int length)
+{
+    std::string string="";
+    if(NULL!=histogram)
+    {
+        std::ostringstream os;
+        os << "{\"total\":" << length << ",\"lines\":[";
+
+        for (int i=0; i<length; i++)
+        {
+            os << "{\"rho\":" << i << "\"theta\":" << histogram[i] << "}";
+
+            if(i<(length-1))
+                os << ",";
+        }
+        os << "}";
+
+        string = os.str();
+    }
+    return string;
+}
+
+/*
+ * Hough transform base on Frank Ableson's gray conversion
+ */
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_ctyeung_ndkex1_HoughLineActivity_lineDetectFromJNI(
+        JNIEnv *env,
+        jobject obj,
+        jobject bitmapSource,
+        jobject bitmapDestination,
+        jint angle,
+        jint threshold)
+{
+    initializeBitmaps(env, bitmapSource, bitmapDestination);
+
+    // create rho-theta plot
+    HoughLine houghline;
+    houghline.CreateRhoTheta(angle, infoSource, pixelsSource);
+    houghline.DrawLines(threshold, infoSource, pixelsSource, infoDestination, pixelsDestination);
+
+    LOGI("unlocking pixels");
+    releaseBitmaps(env, bitmapSource, bitmapDestination);
+
+    std::string string = Lines2JsonString(houghline.mHistogram, houghline.mHistLength);
+    houghline.ReleaseHistogram();
+
+    return env->NewStringUTF(string.c_str());
+}
+
+/*
  * Hough transform base on Frank Ableson's gray conversion
  */
 extern "C" JNIEXPORT jstring JNICALL
@@ -187,6 +243,18 @@ void Convolve(JNIEnv *env,
 
     // release the memory so java can have it again
     env->ReleaseIntArrayElements(arr, c_array, 0);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_ctyeung_ndkex1_HoughLineActivity_imageConvolveFromJNI(
+        JNIEnv *env,
+        jobject obj,
+        jobject bitmapsource,
+        jobject bitmapconvolved,
+        jintArray arr,
+        jint kernelWidth)
+{
+    Convolve(env, obj, bitmapsource, bitmapconvolved, arr, kernelWidth);
 }
 
 extern "C" JNIEXPORT void JNICALL

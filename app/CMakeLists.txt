@@ -19,6 +19,7 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         src/main/cpp/CirclePoint.cpp
         src/main/cpp/HoughCircle.cpp
+        src/main/cpp/HoughLine.cpp
         src/main/cpp/Convolution.cpp
         src/main/cpp/native-lib.cpp)
 

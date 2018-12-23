@@ -9,17 +9,7 @@
     tools:context=".HoughCircleActivity"
     android:orientation="vertical"
     android:layout_gravity="top"
-    tools:showIn="@layout/activity_hough">
-
-    <!--
-    <ImageView
-        android:layout_width="600px"
-        android:layout_height="600px"
-        android:id="@+id/image_hough_source"
-        android:contentDescription="circles"
-        android:src="@drawable/circles"/>
-
-    -->
+    tools:showIn="@layout/activity_hough_circle">
 
     <!-- Derivative / Highlight Images -->
 

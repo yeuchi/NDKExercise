@@ -1,5 +1,5 @@
 # NDKExercise
-NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.
+NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for circle detection. 
 
 ### Convolution filters 
 - 7x7 blur RECT filter
@@ -25,7 +25,7 @@ Tested on the following devices.
 1. Tablet emulator, Pixel C API 28 Android 9
 2. Samsung S9
 
-### Reference
+### References
 
 1. Reuse existing C code with the Android NDK by Frank Ableson
    https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf

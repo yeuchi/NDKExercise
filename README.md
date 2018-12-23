@@ -1,5 +1,5 @@
 # NDKExercise
-NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for circle detection. 
+NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for line and circle detection. 
 
 ### Convolution filters 
 - 7x7 blur RECT filter
@@ -20,6 +20,11 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 4. draw highlight around circle on [image #2].
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png">
 
+### Hough Line
+
+Black line border on yellow + cyan hexagon for line found.  
+<img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png">
+
 ### Devices
 Tested on the following devices.
 1. Tablet emulator, Pixel C API 28 Android 9
@@ -38,6 +43,6 @@ Tested on the following devices.
 4. NDK-stack tool for debugging
    https://developer.android.com/ndk/guides/ndk-stack
    
-5. Hough transform - Circle [my Adobe Flex implementation - right click for source code]
+5. Hough transform [my Adobe Flex implementation - right click for source code]
    http://www.ctyeung.com/flex/hough/srcview/index.html
    

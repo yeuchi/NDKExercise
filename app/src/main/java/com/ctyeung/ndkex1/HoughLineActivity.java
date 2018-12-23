@@ -33,7 +33,7 @@ public class HoughLineActivity extends AppCompatActivity {
     }
 
     private int mAngle = 40;
-    private int mThreshold = 79;
+    private int mThreshold = 69;
     private Context mContext;
 
     @Override
@@ -119,15 +119,6 @@ public class HoughLineActivity extends AppCompatActivity {
                     (String)ex.toString(),
                     Toast.LENGTH_LONG).show();
         }
-    }
-
-    /*
-     * draw line highlight on image
-     */
-    private void highlightCircles(JSONArray circles)
-    {
-        HighlightView view = findViewById(R.id.image_hough_found);
-        view.draw(circles, mAngle);
     }
 
     /**

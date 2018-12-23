@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="Source image with highlight"/>
 
-            <com.ctyeung.ndkex1.HighlightView
+            <ImageView
                 android:layout_width="600px"
                 android:layout_height="600px"
                 android:id="@+id/image_hough_found"
@@ -108,7 +108,7 @@
 
     </LinearLayout>
 
-    <!-- Circles found -->
+    <!-- Lines found -->
 
     <TextView
         android:layout_width="wrap_content"

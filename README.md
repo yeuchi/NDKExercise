@@ -40,7 +40,8 @@ Tested on the following devices.
    https://stackoverflow.com/questions/4841345/sending-ints-between-java-and-c
 
 3. Digital Image Processing by Gonzalez and Woods, 1993. ISBN:0-201-50803-6
-   Convolution pg 189 - 215 Hough pg 432
+   - Convolution pg 189 - 215 
+   - Hough pg 432
 
 4. NDK-stack tool for debugging
    https://developer.android.com/ndk/guides/ndk-stack

@@ -1,5 +1,5 @@
 # NDKExercise
-NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for line and circle detection. 
+Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common algorithms in spatial convolution and hough transforms. 
 
 ### Convolution filters 
 - 7x7 blur RECT filter
@@ -39,7 +39,8 @@ Tested on the following devices.
 2. Sending int[]s between Java and C                                     
    https://stackoverflow.com/questions/4841345/sending-ints-between-java-and-c
 
-3. Digital Image Processing by Gonzalez and Woods, 1993. pg 189 - 215 ISBN:0-201-50803-6
+3. Digital Image Processing by Gonzalez and Woods, 1993. ISBN:0-201-50803-6
+   Convolution pg 189 - 215 Hough pg 432
 
 4. NDK-stack tool for debugging
    https://developer.android.com/ndk/guides/ndk-stack

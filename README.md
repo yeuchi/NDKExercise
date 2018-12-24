@@ -18,12 +18,13 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 2. create rho-theta plot of circle candidates.
 3. threshold peak value as circle found.
 4. draw highlight around circle on [image #2].
-<img width="380" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png"><img width="380" src="https://user-images.githubusercontent.com/1282659/50389139-9e094680-06eb-11e9-876f-cb443b566eca.png">
+
+<img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389139-9e094680-06eb-11e9-876f-cb443b566eca.png">
 
 ### Hough Line
 
 Black line border on yellow + cyan hexagon for line found.  
-<img width="380" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="380" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
+<img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
 
 ### Devices
 Tested on the following devices.

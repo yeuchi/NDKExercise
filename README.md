@@ -26,6 +26,10 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 Black line border on yellow + cyan hexagon for line found.  
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
 
+### Jetpack Architecture - Data binding
+User interface event handlers following the latest recommended android architecture data binding and viewModel classes.
+https://developer.android.com/topic/libraries/data-binding/
+
 ### Devices
 Tested on the following devices.
 1. Tablet emulator, Pixel C API 28 Android 9

@@ -1,6 +1,12 @@
 package com.ctyeung.ndkex1;
 
+import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.databinding.ActivityHoughLineBinding;
+import com.ctyeung.ndkex1.models.Kernel;
+
+
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -14,6 +20,11 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+
+import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.models.Circle;
+import com.ctyeung.ndkex1.models.Line;
+
 import org.json.JSONArray;
 
 /*
@@ -25,66 +36,38 @@ import org.json.JSONArray;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class HoughLineActivity extends AppCompatActivity {
+public class HoughLineActivity extends AppCompatActivity implements IUIEvents {
 
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    private int mAngle = 40;
-    private int mThreshold = 69;
+    ActivityHoughLineBinding activityHoughLineBinding;
+    Line mLine;
+
+    private int DEFAULT_ANGLE = 40;
+    private int DEFAULT_THRESHOLD = 69;
     private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hough_line);
+        mLine = new Line(DEFAULT_ANGLE, DEFAULT_THRESHOLD);
+        activityHoughLineBinding = DataBindingUtil.setContentView(this, R.layout.activity_hough_line);
+        activityHoughLineBinding.setLine(mLine);
+        activityHoughLineBinding.setUiEvent(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
 
-        intUIControlls();
         runJNICode();
     }
 
-    /*
-     * initialize UI controlls + handlers
-     * - move this into MVP presenter class
-     */
-    private void intUIControlls()
+    public void onActionButtonClick()
     {
-        NumberPicker thresholdPicker = findViewById(R.id.num_threshold);
-        thresholdPicker.setMaxValue(255);
-        thresholdPicker.setMinValue(0);
-        thresholdPicker.setValue(mThreshold);
-
-        thresholdPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                mThreshold = newVal;
-            }
-        });
-
-        NumberPicker radiusPicker = findViewById(R.id.num_angle);
-        radiusPicker.setMaxValue(360);
-        radiusPicker.setMinValue(0);
-        radiusPicker.setValue(mAngle);
-
-        radiusPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                mAngle = newVal;
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_star);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                runJNICode();
-            }
-        });
+        runJNICode();
     }
 
     private void runJNICode()
@@ -96,7 +79,8 @@ public class HoughLineActivity extends AppCompatActivity {
             Bitmap bmpOut = BitmapFactory.decodeResource(getResources(), R.drawable.hexagons);
             //Bitmap bmpOut = Bitmap.createBitmap(bmpIn.getWidth(), bmpIn.getHeight(), Config.ALPHA_8);
 
-            imageConvolveFromJNI(bmpIn, bmpOut, BasicKernels.isotropicDerivative(), 3);
+            Kernel kernel = KernelFactory.isotropicDerivative();
+            imageConvolveFromJNI(bmpIn, bmpOut, kernel.mValues, kernel.mWidth);
 
             // insert processed image
             ImageView ivDerivative = this.findViewById(R.id.image_hough_derivative);
@@ -105,7 +89,7 @@ public class HoughLineActivity extends AppCompatActivity {
                 ivDerivative.setImageBitmap(bmpOut);
 
             // perform Hough transform
-            lineDetectFromJNI(bmpOut, bmpIn, mAngle, mThreshold);
+            lineDetectFromJNI(bmpOut, bmpIn, mLine.mAngle, mLine.mThreshold);
 
             // highlight image
             ImageView ivHighlight = this.findViewById(R.id.image_hough_found);

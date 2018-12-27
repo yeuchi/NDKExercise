@@ -1,4 +1,4 @@
-package com.ctyeung.ndkex1.data;
+package com.ctyeung.ndkex1.utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

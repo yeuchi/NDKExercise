@@ -1,33 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HoughCircleActivity">
+<layout>
+    <data>
+        <variable
+            name="circle"
+            type="com.ctyeung.ndkex1.models.Circle"/>
 
-    <android.support.design.widget.AppBarLayout
+        <variable
+            name="uiEvent"
+            type="com.ctyeung.ndkex1.IUIEvents"/>
+    </data>
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        tools:context=".HoughCircleActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    </android.support.design.widget.AppBarLayout>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <include layout="@layout/content_hough_circle" />
+        </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/btn_star" />
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".HoughCircleActivity"
+            android:orientation="vertical"
+            android:layout_gravity="top"
+            tools:showIn="@layout/activity_hough_circle">
 
-</android.support.design.widget.CoordinatorLayout>
+            <!-- Derivative / Highlight Images -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Derivative image"/>
+
+                    <ImageView
+                        android:layout_width="600px"
+                        android:layout_height="600px"
+                        android:id="@+id/image_hough_derivative"
+                        android:contentDescription="derivative"
+                        android:src="@drawable/circles"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Source image with highlight"/>
+
+                    <com.ctyeung.ndkex1.HighlightView
+                        android:layout_width="600px"
+                        android:layout_height="600px"
+                        android:id="@+id/image_hough_found"
+                        android:background="@drawable/circles"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- NumberPickers -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Radius"/>
+
+                    <com.ctyeung.ndkex1.NumberPickerX
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:value="@{circle.mRadius}"
+                        android:id="@+id/num_radius"
+                        android:onValueChange="@{(picker,oldv,newv) -> circle.onRadiusChange(oldv, newv)}"
+                        app:maxValue="@{circle.mMaxRadius}"
+                        app:minValue="@{circle.mMinRadius}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Threshold"/>
+
+                    <com.ctyeung.ndkex1.NumberPickerX
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:value="@{circle.mThreshold}"
+                        android:id="@+id/num_threshold"
+                        android:onValueChange="@{(picker,oldv,newv) -> circle.onThresholdChange(oldv, newv)}"
+                        app:maxValue="@{circle.mMaxThreshold}"
+                        app:minValue="@{circle.mMinThreshold}"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Circles found -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:id="@+id/text_circles"/>
+
+            <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/grid_circles"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_gravity="bottom"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical"
+                android:scrollbarFadeDuration="0"
+                android:scrollbarDefaultDelayBeforeFade="500000"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:isScrollContainer="true">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_circles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </GridLayout>
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/btn_star"
+            android:onClick="@{() -> uiEvent.onActionButtonClick()}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

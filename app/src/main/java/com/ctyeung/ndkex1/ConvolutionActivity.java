@@ -1,6 +1,7 @@
 package com.ctyeung.ndkex1;
 
 
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -24,6 +25,11 @@ import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.databinding.ActivityConvolutionBinding;
+import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.models.Kernel;
+
 /*
  * Reference:
  * https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
@@ -41,51 +47,34 @@ public class ConvolutionActivity extends AppCompatActivity
         System.loadLibrary("native-lib");
     }
 
-    private TextView mTextView;
+    ActivityConvolutionBinding mActivityConvolutionBinding;
+    Kernel mKernel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_convolution);
+        mKernel = KernelFactory.horizontalDerivative();
+        mActivityConvolutionBinding = DataBindingUtil.setContentView(this, R.layout.activity_convolution);
+        mActivityConvolutionBinding.setKernel(mKernel);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //toolbar.setDisplayHomeAsUpEnabled(true);
 
-        /*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
-
-        mTextView = findViewById(R.id.filter_selection);
-        String filterType = getResources().getString(R.string.filter_derivative_h);
-        mTextView.setText(filterType);
-        int kernelWidth = 3;
-        int[] kernel = BasicKernels.horizontalDerivative();
-        runJNICode_Convolution(kernel, kernelWidth);
+        runJNICode_Convolution();
     }
-
-
-
 
     /*
      * https://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem
      * need to set option in CMakeLists.txt
      */
-    private void runJNICode_Convolution(int[] kernel,
-                                        int kernelWidth)
+    private void runJNICode_Convolution()
     {
         try {
 
             Bitmap bmpIn = BitmapFactory.decodeResource(getResources(), R.drawable.white_lion_small);
             Bitmap bmpOut = BitmapFactory.decodeResource(getResources(), R.drawable.white_lion_small_gray);
-            //Bitmap bmpOut = Bitmap.createBitmap(bmpIn.getWidth(), bmpIn.getHeight(), Config.ALPHA_8);
 
-            imageConvolveFromJNI(bmpIn, bmpOut, kernel, kernelWidth);
+            imageConvolveFromJNI(bmpIn, bmpOut, mKernel.mValues, mKernel.mWidth);
 
             // insert processed image
             ImageView imageView = this.findViewById(R.id.image_proccessed);
@@ -125,44 +114,31 @@ public class ConvolutionActivity extends AppCompatActivity
         {
             default:
             case R.id.filter_identity:
-                filterType = getResources().getString(R.string.filter_identity);
-                kernel = BasicKernels.identity();
-                kernelWidth = 1;
+                mKernel = KernelFactory.identity();
                 break;
 
             case R.id.filter_deriviative_h:
-                filterType = getResources().getString(R.string.filter_derivative_h);
-                kernel = BasicKernels.horizontalDerivative();
-                kernelWidth = 3;
+                mKernel = KernelFactory.horizontalDerivative();
                 break;
 
             case R.id.filter_deriviative_v:
-                filterType = getResources().getString(R.string.filter_derivative_v);
-                kernel = BasicKernels.verticalDerivative();
-                kernelWidth = 3;
+                mKernel = KernelFactory.verticalDerivative();
                 break;
 
             case R.id.filter_deriviative_isotropic:
-                filterType = getResources().getString(R.string.filter_derivative);
-                kernel = BasicKernels.isotropicDerivative();
-                kernelWidth = 3;
+                mKernel = KernelFactory.isotropicDerivative();
                 break;
 
             case R.id.filter_blur:
-                filterType = getResources().getString(R.string.filter_blur);
-                kernel = BasicKernels.blur();
-                kernelWidth = 7;
+                mKernel = KernelFactory.blur();
                 break;
 
             case R.id.filter_sharpen:
-                filterType = getResources().getString(R.string.filter_sharpen);
-                kernel = BasicKernels.sharpen();
-                kernelWidth = 3;
+                mKernel = KernelFactory.sharpen();
                 break;
         }
-
-        mTextView.setText(filterType);
-        runJNICode_Convolution(kernel, kernelWidth);
+        mActivityConvolutionBinding.setKernel(mKernel);
+        runJNICode_Convolution();
         return true;
     }
 

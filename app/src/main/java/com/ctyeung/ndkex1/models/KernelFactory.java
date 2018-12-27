@@ -1,8 +1,9 @@
-package com.ctyeung.ndkex1;
+package com.ctyeung.ndkex1.models;
 
-public class BasicKernels {
+import com.ctyeung.ndkex1.models.Kernel;
 
-    public static int[] horizontalDerivative()
+public class KernelFactory {
+    public static Kernel horizontalDerivative()
     {
         int kernelWidth = 3;
         int[] kernel = new int[kernelWidth*kernelWidth];
@@ -18,10 +19,10 @@ public class BasicKernels {
         kernel[7] = 1;
         kernel[8] = 0;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_HOR_DERIVATIVE);
     }
 
-    public static int[] verticalDerivative()
+    public static Kernel verticalDerivative()
     {
         int kernelWidth = 3;
         int[] kernel = new int[kernelWidth*kernelWidth];
@@ -37,10 +38,10 @@ public class BasicKernels {
         kernel[7] = 0;
         kernel[8] = 0;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_VERT_DERIVATIVE);
     }
 
-    public static int[] isotropicDerivative()
+    public static Kernel isotropicDerivative()
     {
         int kernelWidth = 3;
         int[] kernel = new int[kernelWidth*kernelWidth];
@@ -56,10 +57,10 @@ public class BasicKernels {
         kernel[7] = -1;
         kernel[8] = -1;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_ISO_DERIVATIVE);
     }
 
-    public static int[] sharpen()
+    public static Kernel sharpen()
     {
         int kernelWidth = 3;
         int[] kernel = new int[kernelWidth*kernelWidth];
@@ -75,25 +76,25 @@ public class BasicKernels {
         kernel[7] = -1;
         kernel[8] = -1;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_SHARPEN);
     }
 
-    public static int[] blur()
+    public static Kernel blur()
     {
         int kernelWidth = 7;
         int[] kernel = new int[kernelWidth*kernelWidth];
         for(int i=0; i<kernel.length; i++)
             kernel[i] = 1;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_BLUR);
     }
 
-    public static int[] identity()
+    public static Kernel identity()
     {
         int kernelWidth = 1;
         int[] kernel = new int[kernelWidth*kernelWidth];
         kernel[0] = 1;
 
-        return kernel;
+        return new Kernel(kernelWidth, kernel, Kernel.TYPE_IDENTITY);
     }
 }

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.ctyeung.ndkex1.data.JSONhelper;
+import com.ctyeung.ndkex1.utils.JSONhelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

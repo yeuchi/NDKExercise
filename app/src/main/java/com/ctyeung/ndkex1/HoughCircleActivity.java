@@ -1,6 +1,10 @@
 package com.ctyeung.ndkex1;
 
+import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.databinding.ActivityHoughCircleBinding;
+
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,8 +21,10 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ctyeung.ndkex1.data.JSONhelper;
-import com.ctyeung.ndkex1.data.ListGridAdapter;
+import com.ctyeung.ndkex1.utils.JSONhelper;
+import com.ctyeung.ndkex1.ListGridAdapter;
+import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.models.Circle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,68 +38,40 @@ import org.json.JSONObject;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class HoughCircleActivity extends AppCompatActivity {
+public class HoughCircleActivity extends AppCompatActivity implements IUIEvents {
 
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    private int mRadius = 40;
-    private int mThreshold = 184;
+    ActivityHoughCircleBinding activityHoughCircleBinding;
+    Circle mCircle;
+
+    private int DEFAULT_RADIUS = 40;
+    private int DEFAULT_THRESHOLD = 184;
     private Context mContext;
     private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hough_circle);
+        mCircle = new Circle(DEFAULT_RADIUS, DEFAULT_THRESHOLD);
+        activityHoughCircleBinding = DataBindingUtil.setContentView(this, R.layout.activity_hough_circle);
+        activityHoughCircleBinding.setCircle(mCircle);
+        activityHoughCircleBinding.setUiEvent(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
 
-        intUIControlls();
         initGrid();
         runJNICode();
     }
 
-    /*
-     * initialize UI controlls + handlers
-     * - move this into MVP presenter class
-     */
-    private void intUIControlls()
+    public void onActionButtonClick()
     {
-        NumberPicker thresholdPicker = findViewById(R.id.num_threshold);
-        thresholdPicker.setMaxValue(255);
-        thresholdPicker.setMinValue(0);
-        thresholdPicker.setValue(mThreshold);
-
-        thresholdPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                mThreshold = newVal;
-            }
-        });
-
-        NumberPicker radiusPicker = findViewById(R.id.num_radius);
-        radiusPicker.setMaxValue(300);
-        radiusPicker.setMinValue(0);
-        radiusPicker.setValue(mRadius);
-
-        radiusPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                mRadius = newVal;
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_star);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                runJNICode();
-            }
-        });
+        runJNICode();
     }
 
     private void initGrid()
@@ -129,9 +107,8 @@ public class HoughCircleActivity extends AppCompatActivity {
             // perform edge detection
             Bitmap bmpIn = BitmapFactory.decodeResource(getResources(), R.drawable.circles);
             Bitmap bmpOut = BitmapFactory.decodeResource(getResources(), R.drawable.circles);
-            //Bitmap bmpOut = Bitmap.createBitmap(bmpIn.getWidth(), bmpIn.getHeight(), Config.ALPHA_8);
 
-            imageConvolveFromJNI(bmpIn, bmpOut, BasicKernels.isotropicDerivative(), 3);
+            imageConvolveFromJNI(bmpIn, bmpOut, mCircle.mKernel.mValues, mCircle.mKernel.mWidth);
 
             // insert processed image
             ImageView imageView = this.findViewById(R.id.image_hough_derivative);
@@ -140,7 +117,7 @@ public class HoughCircleActivity extends AppCompatActivity {
                 imageView.setImageBitmap(bmpOut);
 
             // perform Hough transform
-            String jsonString = circleDetectFromJNI(bmpOut, mRadius, mThreshold);
+            String jsonString = circleDetectFromJNI(bmpOut, mCircle.mRadius, mCircle.mThreshold);
 
             // parse json
             JSONArray circles = parseCircleJson(jsonString);
@@ -191,23 +168,7 @@ public class HoughCircleActivity extends AppCompatActivity {
     private void highlightCircles(JSONArray circles)
     {
         HighlightView view = findViewById(R.id.image_hough_found);
-        view.draw(circles, mRadius);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            default:
-            case R.id.hough_circle:
-                runJNICode();
-                break;
-
-            case R.id.hough_line:
-                break;
-        }
-        return true;
+        view.draw(circles, mCircle.mRadius);
     }
 
     /**

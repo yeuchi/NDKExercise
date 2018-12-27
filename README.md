@@ -1,7 +1,7 @@
 # NDKExercise
 Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common computations: spatial convolution and hough transforms. 
 
-Additionally, I am using Jetpack data-binding and view-models to handle UI events.
+Additionally, I am using Jetpack data-binding and view-models to handle UI events and data.
 
 ### Convolution filters 
 - 7x7 blur RECT filter

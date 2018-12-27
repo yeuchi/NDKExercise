@@ -3,7 +3,7 @@
     <data>
         <variable
             name="line"
-            type="com.ctyeung.ndkex1.models.Line"/>
+            type="com.ctyeung.ndkex1.viewModels.Line"/>
 
         <variable
             name="uiEvent"

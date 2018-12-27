@@ -3,7 +3,7 @@
     <data>
         <variable
             name="kernel"
-            type="com.ctyeung.ndkex1.models.Kernel"/>
+            type="com.ctyeung.ndkex1.viewModels.Kernel"/>
     </data>
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

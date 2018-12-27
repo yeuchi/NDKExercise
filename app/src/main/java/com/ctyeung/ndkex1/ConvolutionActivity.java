@@ -25,10 +25,9 @@ import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.viewModels.KernelFactory;
 import com.ctyeung.ndkex1.databinding.ActivityConvolutionBinding;
-import com.ctyeung.ndkex1.models.Kernel;
-import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.viewModels.Kernel;
 
 /*
  * Reference:

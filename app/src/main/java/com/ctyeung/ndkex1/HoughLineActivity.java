@@ -1,8 +1,8 @@
 package com.ctyeung.ndkex1;
 
-import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.viewModels.KernelFactory;
 import com.ctyeung.ndkex1.databinding.ActivityHoughLineBinding;
-import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.viewModels.Kernel;
 
 
 import android.content.Context;
@@ -21,9 +21,9 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 
-import com.ctyeung.ndkex1.models.Kernel;
-import com.ctyeung.ndkex1.models.Circle;
-import com.ctyeung.ndkex1.models.Line;
+import com.ctyeung.ndkex1.viewModels.Kernel;
+import com.ctyeung.ndkex1.viewModels.Circle;
+import com.ctyeung.ndkex1.viewModels.Line;
 
 import org.json.JSONArray;
 

@@ -1,6 +1,6 @@
-package com.ctyeung.ndkex1.models;
+package com.ctyeung.ndkex1.viewModels;
 
-import com.ctyeung.ndkex1.models.Kernel;
+import com.ctyeung.ndkex1.viewModels.Kernel;
 
 public class KernelFactory {
     public static Kernel horizontalDerivative()

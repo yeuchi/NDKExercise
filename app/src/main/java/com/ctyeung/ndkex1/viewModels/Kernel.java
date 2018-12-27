@@ -1,4 +1,4 @@
-package com.ctyeung.ndkex1.models;
+package com.ctyeung.ndkex1.viewModels;
 
 import android.app.Activity;
 import android.app.Application;

@@ -1,6 +1,6 @@
 package com.ctyeung.ndkex1;
 
-import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.viewModels.KernelFactory;
 import com.ctyeung.ndkex1.databinding.ActivityHoughCircleBinding;
 
 import android.content.Context;
@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.ctyeung.ndkex1.utils.JSONhelper;
 import com.ctyeung.ndkex1.ListGridAdapter;
-import com.ctyeung.ndkex1.models.Kernel;
-import com.ctyeung.ndkex1.models.Circle;
+import com.ctyeung.ndkex1.viewModels.Kernel;
+import com.ctyeung.ndkex1.viewModels.Circle;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

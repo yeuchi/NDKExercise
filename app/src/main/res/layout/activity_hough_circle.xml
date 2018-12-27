@@ -3,7 +3,7 @@
     <data>
         <variable
             name="circle"
-            type="com.ctyeung.ndkex1.models.Circle"/>
+            type="com.ctyeung.ndkex1.viewModels.Circle"/>
 
         <variable
             name="uiEvent"

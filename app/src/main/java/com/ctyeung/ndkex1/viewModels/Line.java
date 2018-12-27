@@ -1,6 +1,6 @@
-package com.ctyeung.ndkex1.models;
+package com.ctyeung.ndkex1.viewModels;
 
-import com.ctyeung.ndkex1.models.KernelFactory;
+import com.ctyeung.ndkex1.viewModels.KernelFactory;
 
 public class Line extends Common
 {

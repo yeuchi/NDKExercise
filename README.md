@@ -55,5 +55,5 @@ Tested on the following devices.
 5. Hough transform [my Adobe Flex implementation - right click for source code]
    http://www.ctyeung.com/flex/hough/srcview/index.html
    
-6. Jetpack architecture - databinding tutorial, CodingWithMitch
+6. Jetpack architecture - databinding tutorial, CodingWithMitch                                                       
    https://www.youtube.com/watch?v=v4XO_y3RErI

@@ -1,5 +1,5 @@
 # NDKExercise
-NDK exercise base on Frank Ableson's example.  Added spatial convolution capability with the following examples.  User may define custom kernel.  Also added Hough transform for line and circle detection. 
+Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common computations: spatial convolution and hough transforms. 
 
 ### Convolution filters 
 - 7x7 blur RECT filter
@@ -18,12 +18,13 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 2. create rho-theta plot of circle candidates.
 3. threshold peak value as circle found.
 4. draw highlight around circle on [image #2].
-<img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png">
+
+<img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389139-9e094680-06eb-11e9-876f-cb443b566eca.png">
 
 ### Hough Line
 
 Black line border on yellow + cyan hexagon for line found.  
-<img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png">
+<img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
 
 ### Devices
 Tested on the following devices.
@@ -38,7 +39,9 @@ Tested on the following devices.
 2. Sending int[]s between Java and C                                     
    https://stackoverflow.com/questions/4841345/sending-ints-between-java-and-c
 
-3. Digital Image Processing by Gonzalez and Woods, 1993. pg 189 - 215 ISBN:0-201-50803-6
+3. Digital Image Processing by Gonzalez and Woods, 1993. ISBN:0-201-50803-6
+   - Convolution pg 189 - 215 
+   - Hough pg 432
 
 4. NDK-stack tool for debugging
    https://developer.android.com/ndk/guides/ndk-stack

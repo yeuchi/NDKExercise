@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NDKEx1</string>
+    <string name="app_name">Native Development Kit</string>
     <string name="action_settings">Settings</string>
     <string name="filter_identity">Identity</string>
     <string name="filter_blur">Blur 7x7</string>
@@ -12,5 +12,6 @@
     <string name="title_activity_hough">Hough Circles</string>
     <string name="title_activity_convolution">Spatial Convolution</string>
     <string name="title_activity_hough_line">Hough Lines</string>
-
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

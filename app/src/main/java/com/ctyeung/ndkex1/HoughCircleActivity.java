@@ -38,35 +38,35 @@ import org.json.JSONObject;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class HoughCircleActivity extends AppCompatActivity implements IUIEvents {
+public class HoughCircleActivity extends BaseNavDrawerActivity
+        implements IUIEvents {
 
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    ActivityHoughCircleBinding activityHoughCircleBinding;
-    Circle mCircle;
+    private ActivityHoughCircleBinding activityHoughCircleBinding;
+    private Circle mCircle;
 
     private int DEFAULT_RADIUS = 40;
     private int DEFAULT_THRESHOLD = 184;
-    private Context mContext;
     private RecyclerView mRecyclerView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_hough_circle);
+
         mCircle = new Circle(DEFAULT_RADIUS, DEFAULT_THRESHOLD);
         activityHoughCircleBinding = DataBindingUtil.setContentView(this, R.layout.activity_hough_circle);
         activityHoughCircleBinding.setCircle(mCircle);
         activityHoughCircleBinding.setUiEvent(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        mContext = this.getApplicationContext();
-
         initGrid();
         runJNICode();
+        super.initDrawer(R.id.activity_hough_circle);
     }
 
     public void onActionButtonClick()
@@ -90,14 +90,6 @@ public class HoughCircleActivity extends AppCompatActivity implements IUIEvents 
         ListGridAdapter adapter = new ListGridAdapter(circles);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setHasFixedSize(true);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_hough, menu);
-        return true;
     }
 
     private void runJNICode()

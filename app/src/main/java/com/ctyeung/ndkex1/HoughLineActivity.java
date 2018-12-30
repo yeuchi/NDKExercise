@@ -15,6 +15,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -36,33 +37,32 @@ import org.json.JSONArray;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class HoughLineActivity extends AppCompatActivity implements IUIEvents {
+public class HoughLineActivity extends BaseNavDrawerActivity
+        implements IUIEvents {
 
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    ActivityHoughLineBinding activityHoughLineBinding;
-    Line mLine;
+    private ActivityHoughLineBinding activityHoughLineBinding;
+    private Line mLine;
 
     private int DEFAULT_ANGLE = 40;
     private int DEFAULT_THRESHOLD = 69;
-    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_hough_line);
+
         mLine = new Line(DEFAULT_ANGLE, DEFAULT_THRESHOLD);
         activityHoughLineBinding = DataBindingUtil.setContentView(this, R.layout.activity_hough_line);
         activityHoughLineBinding.setLine(mLine);
         activityHoughLineBinding.setUiEvent(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        mContext = this.getApplicationContext();
-
         runJNICode();
+        super.initDrawer(R.id.activity_hough_line);
     }
 
     public void onActionButtonClick()

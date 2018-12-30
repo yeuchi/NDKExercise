@@ -38,35 +38,35 @@ import com.ctyeung.ndkex1.viewModels.Kernel;
  * Author: Frank Ableson
  * Contact Info: fableson@msiservices.com
  */
-public class ConvolutionActivity extends AppCompatActivity
+public class ConvolutionActivity extends BaseNavDrawerActivity
 {
-
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
 
-    ActivityConvolutionBinding mActivityConvolutionBinding;
-    Kernel mKernel;
+    private ActivityConvolutionBinding mActivityConvolutionBinding;
+    private Kernel mKernel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_convolution);
+
         mKernel = KernelFactory.horizontalDerivative();
         mActivityConvolutionBinding = DataBindingUtil.setContentView(this, R.layout.activity_convolution);
         mActivityConvolutionBinding.setKernel(mKernel);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        runJNICode_Convolution();
+        runJNICode();
+        super.initDrawer(R.id.activity_convolution);
     }
 
     /*
      * https://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem
      * need to set option in CMakeLists.txt
      */
-    private void runJNICode_Convolution()
+    private void runJNICode()
     {
         try {
 
@@ -100,9 +100,9 @@ public class ConvolutionActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        if(t.onOptionsItemSelected(item))
+            return true;
+
         int id = item.getItemId();
         int kernelWidth;
         int[] kernel;
@@ -112,6 +112,8 @@ public class ConvolutionActivity extends AppCompatActivity
         switch (id)
         {
             default:
+                return false;
+
             case R.id.filter_identity:
                 mKernel = KernelFactory.identity();
                 break;
@@ -137,7 +139,7 @@ public class ConvolutionActivity extends AppCompatActivity
                 break;
         }
         mActivityConvolutionBinding.setKernel(mKernel);
-        runJNICode_Convolution();
+        runJNICode();
         return true;
     }
 

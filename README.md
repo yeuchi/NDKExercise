@@ -2,12 +2,12 @@
 This exercise is based on Frank Ableson's article<sup>[1]</sup> on native development kit in C++.
 Java iterators are slow compared to pointer arithemtics.  Hence, image processing presents an excellent usage of native development in C++ through java native interface (JNI).  This exercise demonstrates spatial convolution, hough transforms as well as Jetpack data-binding, view-models, UI navigation drawer.
 
-### Data binding, Navigation drawer
+### Data binding, Navigation drawer (java)
 The navigation drawer is based on Rohit Kumar Kanojia's article<sup>[7]</sup>.  All one-way xml data/event handler binding and view-models are based on Mitch Tabian's tutorial<sup>[6]</sup>.
 
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551474-68fa7800-0c46-11e9-913e-b294929ad9d2.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551471-68fa7800-0c46-11e9-9d95-56cac1fb0a7b.png">
 
-### Convolution filters
+### Convolution filters (C++)
 Implementation of kernenls and convolution is well described in Gonzolas & Woods' book<sup>[3]</sup>.
 For the sharpen filter, out-of-bound pixels are intentionally not corrected to show pixel locations and highlight.
 
@@ -21,12 +21,12 @@ For the sharpen filter, out-of-bound pixels are intentionally not corrected to s
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551468-68fa7800-0c46-11e9-9756-d25e369e71a7.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551470-68fa7800-0c46-11e9-8c26-edd805ca1ef8.png">
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551469-68fa7800-0c46-11e9-9e6b-e2c59afc0cc9.png">
 
-### Hough Line
+### Hough Line (C++)
 Implementation of hough transform for line detection is described in Gonzolas & Woods' book<sup>[3]</sup>.
 Black line border on yellow + cyan hexagon for line found.  
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
 
-### Hough Circle
+### Hough Circle (C++)
 Implementation of hough transform for circle detection is described in my old Flex example<sup>[5]</sup>
 Cyan border around yellow marks the circle found.  The algorithm is as follows.
 1. convolution -> edge detection [image #1].

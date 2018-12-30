@@ -1,7 +1,13 @@
 # NDKExercise
 Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common computations: spatial convolution and hough transforms. 
 
-Additionally, I am using Jetpack data-binding and view-models to handle UI events and data.
+Additionally, I am using Jetpack data-binding, view-models and navigation drawer.
+
+### Jetpack Architecture - Data binding / Navigation drawer
+User interface event handlers following the latest recommended android architecture data binding and viewModel classes.
+https://developer.android.com/topic/libraries/data-binding/
+
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551474-68fa7800-0c46-11e9-913e-b294929ad9d2.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551471-68fa7800-0c46-11e9-9d95-56cac1fb0a7b.png">
 
 ### Convolution filters 
 - 7x7 blur RECT filter
@@ -11,7 +17,7 @@ Additionally, I am using Jetpack data-binding and view-models to handle UI event
 - 3x3 derivate vertical
 - 3x3 edge detection - isotropic
 
-<img width="280" src="https://user-images.githubusercontent.com/1282659/49413992-6c7a0c80-f737-11e8-8dcd-e1160f64513f.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/49452005-feb8f980-f7a5-11e8-92bf-1c1add07f123.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/49452012-0082bd00-f7a6-11e8-980f-2d7821e9aa18.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551468-68fa7800-0c46-11e9-9756-d25e369e71a7.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551469-68fa7800-0c46-11e9-9e6b-e2c59afc0cc9.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551470-68fa7800-0c46-11e9-8c26-edd805ca1ef8.png">
 
 ### Hough Circle
 
@@ -21,16 +27,14 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 3. threshold peak value as circle found.
 4. draw highlight around circle on [image #2].
 
-<img width="400" src="https://user-images.githubusercontent.com/1282659/50365554-c6057800-053a-11e9-906f-c6140bf3691d.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389139-9e094680-06eb-11e9-876f-cb443b566eca.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551475-6b5cd200-0c46-11e9-96ae-a2e96b4a6b39.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551476-6b5cd200-0c46-11e9-92c0-9199217e6d90.png">
 
 ### Hough Line
 
 Black line border on yellow + cyan hexagon for line found.  
-<img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
-
-### Jetpack Architecture - Data binding
-User interface event handlers following the latest recommended android architecture data binding and viewModel classes.
-https://developer.android.com/topic/libraries/data-binding/
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
 
 ### Devices
 Tested on the following devices.

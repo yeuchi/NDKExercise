@@ -8,7 +8,9 @@ The navigation drawer is based on Rohit Kumar Kanojia's article<sup>[7]</sup>.  
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551474-68fa7800-0c46-11e9-913e-b294929ad9d2.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551471-68fa7800-0c46-11e9-9d95-56cac1fb0a7b.png">
 
 ### Convolution filters
-Implementation of kernenls and convolution is well described in Gonzolas & Woods' book<sup>[3]</sup>
+Implementation of kernenls and convolution is well described in Gonzolas & Woods' book<sup>[3]</sup>.
+For the sharpen filter, out-of-bound pixels are intentionally not corrected to show pixel locations and highlight.
+
 - 7x7 blur RECT filter
 - 3x3 sharpen
 - 1 identity filter

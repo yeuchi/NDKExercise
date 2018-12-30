@@ -1,15 +1,14 @@
 # NDKExercise
-Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common computations: spatial convolution and hough transforms. 
+This exercise is based on Frank Ableson's article<sup>[1]</sup> on native development kit in C++.  
+Expensive computations such as image processing is much faster in C/C++ than Java.  This exercise demonstrates spatial convolution, hough transforms as well as Jetpack data-binding, view-models, UI navigation drawer.
 
-Additionally, I am using Jetpack data-binding, view-models and navigation drawer.
-
-### Jetpack Architecture - Data binding / Navigation drawer
-User interface event handlers following the latest recommended android architecture data binding and viewModel classes.
-https://developer.android.com/topic/libraries/data-binding/
+### Data binding, Navigation drawer
+The navigation drawer is based on Rohit Kumar Kanojia's article<sup>[7]</sup>.  All one-way xml data/event handler binding and view-models are based on Mitch Tabian's tutorial<sup>[6]</sup>.
 
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551474-68fa7800-0c46-11e9-913e-b294929ad9d2.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551471-68fa7800-0c46-11e9-9d95-56cac1fb0a7b.png">
 
-### Convolution filters 
+### Convolution filters
+Implementation of kernenls and convolution is well described in Gonzolas & Woods' book<sup>[3]</sup>
 - 7x7 blur RECT filter
 - 3x3 sharpen
 - 1 identity filter
@@ -17,24 +16,23 @@ https://developer.android.com/topic/libraries/data-binding/
 - 3x3 derivate vertical
 - 3x3 edge detection - isotropic
 
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551468-68fa7800-0c46-11e9-9756-d25e369e71a7.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551469-68fa7800-0c46-11e9-9e6b-e2c59afc0cc9.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551470-68fa7800-0c46-11e9-8c26-edd805ca1ef8.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551468-68fa7800-0c46-11e9-9756-d25e369e71a7.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551470-68fa7800-0c46-11e9-8c26-edd805ca1ef8.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551469-68fa7800-0c46-11e9-9e6b-e2c59afc0cc9.png">
+
+### Hough Line
+Implementation of hough transform for line detection is described in Gonzolas & Woods' book<sup>[3]</sup>.
+Black line border on yellow + cyan hexagon for line found.  
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
 
 ### Hough Circle
-
+Implementation of hough transform for circle detection is described in my old Flex example<sup>[5]</sup>
 Cyan border around yellow marks the circle found.  The algorithm is as follows.
 1. convolution -> edge detection [image #1].
 2. create rho-theta plot of circle candidates.
 3. threshold peak value as circle found.
 4. draw highlight around circle on [image #2].
 
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551475-6b5cd200-0c46-11e9-96ae-a2e96b4a6b39.png">
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551476-6b5cd200-0c46-11e9-92c0-9199217e6d90.png">
-
-### Hough Line
-
-Black line border on yellow + cyan hexagon for line found.  
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png">
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551475-6b5cd200-0c46-11e9-96ae-a2e96b4a6b39.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551476-6b5cd200-0c46-11e9-92c0-9199217e6d90.png">
 
 ### Devices
 Tested on the following devices.

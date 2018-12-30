@@ -1,6 +1,8 @@
 # NDKExercise
 Native development kit in C++ exercise is based on Frank Ableson's example.  Expensive computations such as image processing is much more efficient in C/C++ than Java.  This exercise demonstrates those common computations: spatial convolution and hough transforms. 
 
+Additionally, I am using Jetpack data-binding and view-models to handle UI events and data.
+
 ### Convolution filters 
 - 7x7 blur RECT filter
 - 3x3 sharpen
@@ -26,6 +28,10 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 Black line border on yellow + cyan hexagon for line found.  
 <img width="400" src="https://user-images.githubusercontent.com/1282659/50387177-ef014680-06bb-11e9-8f2c-c0dbc824b0ad.png"><img width="400" src="https://user-images.githubusercontent.com/1282659/50389140-9ea1dd00-06eb-11e9-98d5-cb0807cde807.png">
 
+### Jetpack Architecture - Data binding
+User interface event handlers following the latest recommended android architecture data binding and viewModel classes.
+https://developer.android.com/topic/libraries/data-binding/
+
 ### Devices
 Tested on the following devices.
 1. Tablet emulator, Pixel C API 28 Android 9
@@ -49,3 +55,5 @@ Tested on the following devices.
 5. Hough transform [my Adobe Flex implementation - right click for source code]
    http://www.ctyeung.com/flex/hough/srcview/index.html
    
+6. Jetpack architecture - databinding tutorial, Mitch Tabian                                                       
+   https://www.youtube.com/watch?v=v4XO_y3RErI

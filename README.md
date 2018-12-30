@@ -1,6 +1,6 @@
 # NDKExercise
-This exercise is based on Frank Ableson's article<sup>[1]</sup> on native development kit in C++.  
-Expensive computations such as image processing is much faster in C/C++ than Java.  This exercise demonstrates spatial convolution, hough transforms as well as Jetpack data-binding, view-models, UI navigation drawer.
+This exercise is based on Frank Ableson's article<sup>[1]</sup> on native development kit in C++.
+Java iterators are slow compared to pointer arithemtics.  Hence, image processing presents an excellent usage of native development in C++ through java native interface (JNI).  This exercise demonstrates spatial convolution, hough transforms as well as Jetpack data-binding, view-models, UI navigation drawer.
 
 ### Data binding, Navigation drawer
 The navigation drawer is based on Rohit Kumar Kanojia's article<sup>[7]</sup>.  All one-way xml data/event handler binding and view-models are based on Mitch Tabian's tutorial<sup>[6]</sup>.

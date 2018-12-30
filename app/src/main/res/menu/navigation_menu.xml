@@ -5,10 +5,10 @@
         android:icon="@drawable/ic_portrait_black_24dp"
         android:title="Convolution"/>
     <item android:id="@+id/item_hough_line"
-        android:icon="@drawable/ic_brightness_high_black_24dp"
+        android:icon="@drawable/ic_texture_24px"
         android:title="Hough lines"/>
     <item android:id="@+id/item_hough_circle"
-        android:icon="@drawable/ic_local_grocery_store_black_24dp"
+        android:icon="@drawable/ic_circle_24px"
         android:title="Hough circles"/>
 
 </menu>

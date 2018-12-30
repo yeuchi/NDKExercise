@@ -57,3 +57,7 @@ Tested on the following devices.
    
 6. Jetpack architecture - databinding tutorial, Mitch Tabian                                                       
    https://www.youtube.com/watch?v=v4XO_y3RErI
+   
+7. Android Navigation Drawer by Rohit Kumar Kanojia
+   https://medium.com/quick-code/android-navigation-drawer-e80f7fc2594f
+   

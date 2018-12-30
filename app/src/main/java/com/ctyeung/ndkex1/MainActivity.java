@@ -10,6 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/*
+ * References:
+ *
+ * Navigation drawer by Rohit Kumar Kanojia
+ * https://medium.com/quick-code/android-navigation-drawer-e80f7fc2594f
+ *
+ *
+ * Author: Frank Ableson
+ * https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
+ */
+
 public class MainActivity extends BaseNavDrawerActivity {
 
     // Used to load the 'native-lib' library on application startup.
@@ -24,8 +35,6 @@ public class MainActivity extends BaseNavDrawerActivity {
 
         super.initDrawer(R.id.activity_main);
     }
-
-
 
     public native String stringFromJNI();
     public native String string2FromJNI();

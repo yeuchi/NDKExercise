@@ -29,13 +29,14 @@ import com.ctyeung.ndkex1.viewModels.Line;
 import org.json.JSONArray;
 
 /*
- * Reference:
- * https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
+ * References:
  *
- * ibmphotophun.c
+ * Navigation drawer by Rohit Kumar Kanojia
+ * https://medium.com/quick-code/android-navigation-drawer-e80f7fc2594f
+ *
  *
  * Author: Frank Ableson
- * Contact Info: fableson@msiservices.com
+ * https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
  */
 public class HoughLineActivity extends BaseNavDrawerActivity
         implements IUIEvents {

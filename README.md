@@ -21,11 +21,6 @@ For the sharpen filter, out-of-bound pixels are intentionally not corrected to s
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551468-68fa7800-0c46-11e9-9756-d25e369e71a7.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551470-68fa7800-0c46-11e9-8c26-edd805ca1ef8.png">
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551469-68fa7800-0c46-11e9-9e6b-e2c59afc0cc9.png">
 
-### Hough Line (C++)
-Implementation of hough transform for line detection is described in Gonzolas & Woods' book<sup>[3]</sup>.
-Black line border on yellow + cyan hexagon for line found.  
-<img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
-
 ### Hough Circle (C++)
 Implementation of hough transform for circle detection is described in my old Flex example<sup>[5]</sup>
 Cyan border around yellow marks the circle found.  The algorithm is as follows.
@@ -35,6 +30,11 @@ Cyan border around yellow marks the circle found.  The algorithm is as follows.
 4. draw highlight around circle on [image #2].
 
 <img width="280" src="https://user-images.githubusercontent.com/1282659/50551475-6b5cd200-0c46-11e9-96ae-a2e96b4a6b39.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551476-6b5cd200-0c46-11e9-92c0-9199217e6d90.png">
+
+### Hough Line (C++)
+Implementation of hough transform for line detection is described in Gonzolas & Woods' book<sup>[3]</sup>.
+Black line border on yellow + cyan hexagon for line found.  
+<img width="280" src="https://user-images.githubusercontent.com/1282659/50551472-68fa7800-0c46-11e9-9318-863ae29e29f0.png"><img width="280" src="https://user-images.githubusercontent.com/1282659/50551473-68fa7800-0c46-11e9-8a3c-e319ae19fdce.png">
 
 ### Devices
 Tested on the following devices.

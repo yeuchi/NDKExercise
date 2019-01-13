@@ -46,7 +46,7 @@ none yet
 
 ### References
 
-1. Reuse existing C code with the Android NDK by Frank Ableson
+1. Extend/edit Frank Ableson's C++ (correct RGBA alignment and)
    https://www.ibm.com/developerworks/opensource/tutorials/os-androidndk/os-androidndk-pdf.pdf
    
 2. Sending int[]s between Java and C                                     

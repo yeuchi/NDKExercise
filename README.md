@@ -44,6 +44,23 @@ Tested on the following devices.
 ### Unit, Espresso tests
 none yet
 
+### Configuration CMakeList.txt
+
+add_library( # Sets the name of the library.
+        native-lib
+
+        # Sets the library as a shared library.
+        SHARED
+
+        # Provides a relative path to your source file(s).
+        ```diff
+        + src/main/cpp/CirclePoint.cpp</tspan>
+        + src/main/cpp/HoughCircle.cpp
+        + src/main/cpp/HoughLine.cpp
+        + src/main/cpp/Convolution.cpp
+        ```diff
+        src/main/cpp/native-lib.cpp)
+
 ### References
 
 1. Extend/edit Frank Ableson's C++ (correct RGBA alignment and)

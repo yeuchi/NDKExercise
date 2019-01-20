@@ -53,12 +53,12 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        ```diff
-        + src/main/cpp/CirclePoint.cpp</tspan>
-        + src/main/cpp/HoughCircle.cpp
-        + src/main/cpp/HoughLine.cpp
-        + src/main/cpp/Convolution.cpp
-        ```diff
+```diff
++         src/main/cpp/CirclePoint.cpp</tspan>
++         src/main/cpp/HoughCircle.cpp
++         src/main/cpp/HoughLine.cpp
++         src/main/cpp/Convolution.cpp
+```diff
         src/main/cpp/native-lib.cpp)
 
 ### References

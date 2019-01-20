@@ -44,7 +44,8 @@ Tested on the following devices.
 ### Unit, Espresso tests
 none yet
 
-### Configuration CMakeList.txt
+### Configuration ../src/CMakeList.txt
+Below addition is <bold>CRITICAL</bold> to JNI referencing to C++ classes.
 
 add_library( # Sets the name of the library.
         native-lib
@@ -54,11 +55,10 @@ add_library( # Sets the name of the library.
 
         # Provides a relative path to your source file(s).
 ```diff
-+         src/main/cpp/CirclePoint.cpp</tspan>
-+         src/main/cpp/HoughCircle.cpp
-+         src/main/cpp/HoughLine.cpp
-+         src/main/cpp/Convolution.cpp
-```diff
++       src/main/cpp/CirclePoint.cpp
++       src/main/cpp/HoughCircle.cpp
++       src/main/cpp/HoughLine.cpp
++       src/main/cpp/Convolution.cpp
         src/main/cpp/native-lib.cpp)
 
 ### References

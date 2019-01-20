@@ -62,6 +62,12 @@ add_library( # Sets the name of the library.
 ```
         src/main/cpp/native-lib.cpp)
 
+target_link_libraries( # Specifies the target library.
+        native-lib
+```diff
++       -ljnigraphics
+```
+
 ### References
 
 1. Extend/edit Frank Ableson's C++ (correct RGBA alignment and)

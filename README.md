@@ -59,6 +59,7 @@ add_library( # Sets the name of the library.
 +       src/main/cpp/HoughCircle.cpp
 +       src/main/cpp/HoughLine.cpp
 +       src/main/cpp/Convolution.cpp
+```
         src/main/cpp/native-lib.cpp)
 
 ### References
